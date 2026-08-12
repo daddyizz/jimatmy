@@ -1,12 +1,5 @@
 export type ComparisonSpecKey =
-  | "priceRange"
-  | "os"
-  | "resolution"
-  | "ram"
-  | "storage"
-  | "connectivity"
-  | "streaming"
-  | "gaming";
+  "priceRange" | "os" | "resolution" | "ram" | "storage" | "connectivity" | "streaming" | "gaming";
 
 export const specLabels: Record<ComparisonSpecKey, string> = {
   priceRange: "Julat Harga",
@@ -147,7 +140,11 @@ export const comparisons: Comparison[] = [
           streaming: "—",
           gaming: "Boleh cas telefon sambil main dalam masa lama",
         },
-        pros: ["Boleh cas beberapa peranti", "Sesuai untuk travel dan outdoor", "Selalunya sokong PD lebih tinggi"],
+        pros: [
+          "Boleh cas beberapa peranti",
+          "Sesuai untuk travel dan outdoor",
+          "Selalunya sokong PD lebih tinggi",
+        ],
         cons: ["Berat (±400g)", "Masa cas semula lebih lama"],
         bestFor: "Travel, camping, atau pengguna dua telefon.",
       },

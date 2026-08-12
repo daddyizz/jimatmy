@@ -16,7 +16,10 @@ export const Route = createFileRoute("/guides/$slug")({
   head: ({ params, loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Panduan tidak dijumpai — JimatMY" }, { name: "robots", content: "noindex" }],
+        meta: [
+          { title: "Panduan tidak dijumpai — JimatMY" },
+          { name: "robots", content: "noindex" },
+        ],
       };
     }
     const { guide } = loaderData;
@@ -70,7 +73,10 @@ function GuideNotFound() {
   return (
     <div className="container-page py-16 text-center">
       <h1 className="text-2xl font-extrabold">Panduan tidak dijumpai</h1>
-      <Link to="/guides" className="mt-4 inline-block font-semibold text-primary underline underline-offset-4">
+      <Link
+        to="/guides"
+        className="mt-4 inline-block font-semibold text-primary underline underline-offset-4"
+      >
         Lihat semua panduan
       </Link>
     </div>
@@ -133,7 +139,10 @@ function GuidePage() {
                   <ul className="mt-3 space-y-2">
                     {section.bullets.map((b) => (
                       <li key={b} className="flex gap-2 text-[15px] text-muted-foreground">
-                        <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        <span
+                          aria-hidden="true"
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary"
+                        />
                         <span>{b}</span>
                       </li>
                     ))}

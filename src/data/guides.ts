@@ -59,7 +59,11 @@ export const guides: Guide[] = [
         body: [
           "Port Ethernet sangat membantu jika Wi‑Fi rumah anda tidak stabil, terutama untuk streaming 4K. Port USB pula berguna untuk pemacu keras atau papan kekunci.",
         ],
-        bullets: ["HDMI 2.1 untuk 4K 60fps", "Ethernet untuk sambungan stabil", "USB untuk media luaran"],
+        bullets: [
+          "HDMI 2.1 untuk 4K 60fps",
+          "Ethernet untuk sambungan stabil",
+          "USB untuk media luaran",
+        ],
       },
       {
         id: "bajet",
@@ -118,18 +122,38 @@ export const guides: Guide[] = [
         ],
         bullets: ["18W–22.5W untuk telefon biasa", "45W ke atas jika mahu cas laptop ringan"],
       },
-      { id: "port", heading: "3. Jenis dan bilangan port", body: ["USB‑C PD kini standard. Pastikan port USB‑C boleh input dan output."] },
-      { id: "berat", heading: "4. Berat dan saiz", body: ["20000mAh biasanya melebihi 400g. Jika anda bawa dalam poket setiap hari, 10000mAh lebih praktikal."] },
+      {
+        id: "port",
+        heading: "3. Jenis dan bilangan port",
+        body: ["USB‑C PD kini standard. Pastikan port USB‑C boleh input dan output."],
+      },
+      {
+        id: "berat",
+        heading: "4. Berat dan saiz",
+        body: [
+          "20000mAh biasanya melebihi 400g. Jika anda bawa dalam poket setiap hari, 10000mAh lebih praktikal.",
+        ],
+      },
       {
         id: "penerbangan",
         heading: "5. Had penerbangan",
-        body: ["Kebanyakan syarikat penerbangan hadkan 100Wh (±27000mAh) dalam bagasi tangan. Power bank tidak boleh dimasukkan ke dalam bagasi berdaftar."],
+        body: [
+          "Kebanyakan syarikat penerbangan hadkan 100Wh (±27000mAh) dalam bagasi tangan. Power bank tidak boleh dimasukkan ke dalam bagasi berdaftar.",
+        ],
       },
-      { id: "keselamatan", heading: "6. Ciri keselamatan", body: ["Cari perlindungan lebih cas, litar pintas dan suhu. Elakkan unit tanpa jenama dan tanpa maklumat sel bateri."] },
+      {
+        id: "keselamatan",
+        heading: "6. Ciri keselamatan",
+        body: [
+          "Cari perlindungan lebih cas, litar pintas dan suhu. Elakkan unit tanpa jenama dan tanpa maklumat sel bateri.",
+        ],
+      },
       {
         id: "harga",
         heading: "7. Kira harga sebenar",
-        body: ["Bandingkan harga per 1000mAh selepas voucher. Kadangkala unit lebih mahal sebenarnya lebih jimat per unit kapasiti."],
+        body: [
+          "Bandingkan harga per 1000mAh selepas voucher. Kadangkala unit lebih mahal sebenarnya lebih jimat per unit kapasiti.",
+        ],
       },
     ],
     relatedTools: [
@@ -172,7 +196,9 @@ export const guides: Guide[] = [
       {
         id: "silap",
         heading: "Kesilapan biasa",
-        body: ["Membandingkan harga sebelum penghantaran, dan mengabaikan minimum spend untuk voucher percuma penghantaran."],
+        body: [
+          "Membandingkan harga sebelum penghantaran, dan mengabaikan minimum spend untuk voucher percuma penghantaran.",
+        ],
         bullets: [
           "Sentiasa bandingkan harga akhir, bukan harga paparan",
           "Semak minimum spend voucher",
@@ -202,7 +228,9 @@ export const guides: Guide[] = [
       {
         id: "kos",
         heading: "Senaraikan semua kos, bukan kos produk sahaja",
-        body: ["Kos sebenar termasuk kos produk, penghantaran yang ditanggung seller, yuran platform, iklan, pembungkusan dan kos lain seperti pemulangan."],
+        body: [
+          "Kos sebenar termasuk kos produk, penghantaran yang ditanggung seller, yuran platform, iklan, pembungkusan dan kos lain seperti pemulangan.",
+        ],
         bullets: [
           "Kos produk (COGS)",
           "Yuran marketplace (peratus daripada jualan)",
@@ -230,7 +258,9 @@ export const guides: Guide[] = [
       {
         id: "nota",
         heading: "Nota penting",
-        body: ["Yuran sebenar berbeza mengikut platform, program dan promosi. Sentiasa sahkan kadar terkini dalam seller centre masing-masing sebelum menetapkan harga."],
+        body: [
+          "Yuran sebenar berbeza mengikut platform, program dan promosi. Sentiasa sahkan kadar terkini dalam seller centre masing-masing sebelum menetapkan harga.",
+        ],
       },
     ],
     relatedTools: [
@@ -262,12 +292,16 @@ export const guides: Guide[] = [
       {
         id: "waranti",
         heading: "Waranti dan sokongan tempatan",
-        body: ["Unit import tanpa waranti tempatan mungkin murah, tetapi kos pembaikan atau penggantian ditanggung sepenuhnya oleh anda."],
+        body: [
+          "Unit import tanpa waranti tempatan mungkin murah, tetapi kos pembaikan atau penggantian ditanggung sepenuhnya oleh anda.",
+        ],
       },
       {
         id: "bila-murah-ok",
         heading: "Bila barang murah memang pilihan tepat",
-        body: ["Untuk produk kegunaan sekali sekala atau jangka pendek, pilihan murah selalunya rasional. Yang penting ialah keputusan dibuat secara sedar."],
+        body: [
+          "Untuk produk kegunaan sekali sekala atau jangka pendek, pilihan murah selalunya rasional. Yang penting ialah keputusan dibuat secara sedar.",
+        ],
       },
     ],
     relatedTools: [

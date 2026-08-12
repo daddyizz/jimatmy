@@ -2,7 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { Heart, ExternalLink } from "lucide-react";
 
 import { discountPercent, type Product } from "@/data/products";
-import { marketplaceLabel, resolveOutboundUrl, isAffiliateLink } from "@/data/affiliate";
+import {
+  marketplaceLabel,
+  resolveOutboundUrl,
+  isAffiliateLink,
+  isPlaceholderLink,
+} from "@/data/affiliate";
 import { categoryLabel } from "@/data/categories";
 import { formatRM } from "@/lib/format";
 import { useSavedDeals } from "@/hooks/useSavedDeals";
@@ -18,6 +23,7 @@ export function ProductCard({ product, eager = false }: Props) {
   const saved = hydrated && isSaved(product.id);
   const discount = discountPercent(product);
   const affiliate = isAffiliateLink(product.link);
+  const placeholder = isPlaceholderLink(product.link);
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-shadow hover:shadow-raised">
@@ -43,7 +49,10 @@ export function ProductCard({ product, eager = false }: Props) {
           aria-label={saved ? `Buang ${product.name} dari Saved Deals` : `Simpan ${product.name}`}
           className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-border bg-card/90 text-muted-foreground backdrop-blur transition-colors hover:text-primary"
         >
-          <Heart className={`h-4 w-4 ${saved ? "fill-primary text-primary" : ""}`} aria-hidden="true" />
+          <Heart
+            className={`h-4 w-4 ${saved ? "fill-primary text-primary" : ""}`}
+            aria-hidden="true"
+          />
         </button>
       </div>
 
@@ -60,22 +69,35 @@ export function ProductCard({ product, eager = false }: Props) {
 
         <div className="mt-auto space-y-3 pt-1">
           <div className="flex flex-wrap items-baseline gap-2">
-            <span className="text-lg font-extrabold text-foreground">{formatRM(product.price)}</span>
+            <span className="text-lg font-extrabold text-foreground">
+              {formatRM(product.price)}
+            </span>
             <span className="text-sm text-muted-foreground line-through">
               {formatRM(product.previousPrice)}
             </span>
           </div>
-          <a
-            href={resolveOutboundUrl(product.link)}
-            target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
-            className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-strong"
-          >
-            Semak Harga
-            <ExternalLink className="h-4 w-4" aria-hidden="true" />
-          </a>
+          {placeholder ? (
+            <span
+              aria-disabled="true"
+              className="flex w-full cursor-not-allowed items-center justify-center rounded-xl bg-muted px-4 py-2.5 text-sm font-semibold text-muted-foreground"
+            >
+              Pautan Akan Datang
+            </span>
+          ) : (
+            <a
+              href={resolveOutboundUrl(product.link)}
+              target="_blank"
+              rel="nofollow sponsored noopener noreferrer"
+              className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-strong"
+            >
+              Semak Harga
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
+          )}
           <p className="text-[11px] leading-snug text-muted-foreground">
-            {affiliate ? "Link affiliate" : "Link kedai"} · Harga mungkin berubah
+            {placeholder
+              ? "Produk contoh · Belum dipautkan ke kedai"
+              : `${affiliate ? "Link affiliate" : "Link kedai"} · Harga mungkin berubah`}
           </p>
         </div>
       </div>

@@ -22,13 +22,17 @@ export const Route = createFileRoute("/terms")({
 function TermsPage() {
   return (
     <>
-      <PageHeader eyebrow="Legal" title="Terms of Use" description="Dengan menggunakan JimatMY, anda bersetuju dengan terma di bawah." />
+      <PageHeader
+        eyebrow="Legal"
+        title="Terms of Use"
+        description="Dengan menggunakan JimatMY, anda bersetuju dengan terma di bawah."
+      />
       <div className="container-page max-w-3xl py-8">
         <Prose>
           <h2>Penggunaan laman</h2>
           <p>
-            Kandungan JimatMY disediakan untuk tujuan maklumat dan perancangan. Anda bertanggungjawab
-            mengesahkan maklumat sebelum membuat pembelian.
+            Kandungan JimatMY disediakan untuk tujuan maklumat dan perancangan. Anda
+            bertanggungjawab mengesahkan maklumat sebelum membuat pembelian.
           </p>
 
           <h2>Ketepatan maklumat</h2>
@@ -44,9 +48,7 @@ function TermsPage() {
           </p>
 
           <h2>Pautan pihak ketiga</h2>
-          <p>
-            Kami tidak mengawal kandungan, harga atau dasar laman pihak ketiga yang dipautkan.
-          </p>
+          <p>Kami tidak mengawal kandungan, harga atau dasar laman pihak ketiga yang dipautkan.</p>
 
           <h2>Perubahan terma</h2>
           <p>Terma ini boleh dikemas kini dari semasa ke semasa tanpa notis awal.</p>

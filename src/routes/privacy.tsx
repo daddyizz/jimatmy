@@ -23,7 +23,11 @@ export const Route = createFileRoute("/privacy")({
 function PrivacyPage() {
   return (
     <>
-      <PageHeader eyebrow="Legal" title="Privacy Policy" description="Versi awal. Akan dikemas kini apabila perkhidmatan baharu ditambah." />
+      <PageHeader
+        eyebrow="Legal"
+        title="Privacy Policy"
+        description="Versi awal. Akan dikemas kini apabila perkhidmatan baharu ditambah."
+      />
       <div className="container-page max-w-3xl py-8">
         <Prose>
           <h2>Maklumat yang kami kumpul</h2>

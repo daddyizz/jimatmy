@@ -111,8 +111,7 @@
   --color-warning-foreground: var(--warning-foreground);
   --shadow-card: var(--shadow-card);
   --shadow-raised: var(--shadow-raised);
-  --font-sans:
-    "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 @layer base {
@@ -153,4 +152,3 @@
     padding-inline: 1.5rem;
   }
 }
-

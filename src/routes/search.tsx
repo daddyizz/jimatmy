@@ -34,7 +34,11 @@ function SearchPage() {
 
   return (
     <>
-      <PageHeader eyebrow="Search" title="Carian" description="Cari produk, deal, perbandingan, panduan dan tools.">
+      <PageHeader
+        eyebrow="Search"
+        title="Carian"
+        description="Cari produk, deal, perbandingan, panduan dan tools."
+      >
         <SearchBar size="lg" initialQuery={query} />
       </PageHeader>
 
@@ -70,7 +74,10 @@ function SearchPage() {
                 <p className="font-semibold">Tiada hasil dijumpai</p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Cuba kata kunci lain, atau lihat{" "}
-                  <Link to="/deals" className="font-medium text-primary underline underline-offset-4">
+                  <Link
+                    to="/deals"
+                    className="font-medium text-primary underline underline-offset-4"
+                  >
                     semua deal
                   </Link>
                   .

@@ -43,7 +43,8 @@ type Status = { label: string; className: string };
 function statusFor(margin: number, hasData: boolean): Status {
   if (!hasData) return { label: "—", className: "bg-muted text-muted-foreground" };
   if (margin < 0) return { label: "Rugi", className: "bg-destructive/10 text-destructive" };
-  if (margin < 10) return { label: "Margin Rendah", className: "bg-warning/20 text-warning-foreground" };
+  if (margin < 10)
+    return { label: "Margin Rendah", className: "bg-warning/20 text-warning-foreground" };
   if (margin < 25) return { label: "Sihat", className: "bg-primary-soft text-accent-foreground" };
   return { label: "Sangat Baik", className: "bg-primary text-primary-foreground" };
 }
@@ -68,17 +69,17 @@ export function SellerProfitCalculator() {
     const revenue = Math.max(toNumber(state.sellingPrice), 0);
     const feePct = clamp(toNumber(state.marketplaceFee), 0, 100);
     const fees = (revenue * feePct) / 100;
-    const costs =
+    const otherCosts =
       Math.max(toNumber(state.productCost), 0) +
       Math.max(toNumber(state.shippingCost), 0) +
       Math.max(toNumber(state.adsCost), 0) +
       Math.max(toNumber(state.packagingCost), 0) +
       Math.max(toNumber(state.otherCost), 0);
-    const totalCosts = costs + fees;
+    const totalCosts = otherCosts + fees;
     const netProfit = revenue - totalCosts;
     const margin = revenue > 0 ? (netProfit / revenue) * 100 : 0;
     const roi = totalCosts > 0 ? (netProfit / totalCosts) * 100 : 0;
-    return { revenue, fees, totalCosts, netProfit, margin, roi };
+    return { revenue, fees, otherCosts, totalCosts, netProfit, margin, roi };
   }, [state]);
 
   const hasData = result.revenue > 0;
@@ -165,7 +166,8 @@ export function SellerProfitCalculator() {
         <dl className="mt-4 divide-y divide-border rounded-2xl border border-border bg-card p-5 shadow-card md:p-6">
           <Row label="Revenue" value={formatRM(result.revenue)} />
           <Row label="Yuran marketplace" value={`− ${formatRM(result.fees)}`} />
-          <Row label="Jumlah kos" value={`− ${formatRM(result.totalCosts)}`} />
+          <Row label="Kos produk & operasi" value={`− ${formatRM(result.otherCosts)}`} />
+          <Row label="Jumlah semua kos" value={`− ${formatRM(result.totalCosts)}`} />
           <Row label="Untung bersih" value={formatRM(result.netProfit)} emphasis />
         </dl>
 
@@ -181,7 +183,9 @@ export function SellerProfitCalculator() {
 function Row({ label, value, emphasis }: { label: string; value: string; emphasis?: boolean }) {
   return (
     <div className="flex items-center justify-between gap-4 py-2.5">
-      <dt className={`text-sm ${emphasis ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
+      <dt
+        className={`text-sm ${emphasis ? "font-semibold text-foreground" : "text-muted-foreground"}`}
+      >
         {label}
       </dt>
       <dd className={emphasis ? "text-lg font-extrabold text-foreground" : "text-sm font-medium"}>

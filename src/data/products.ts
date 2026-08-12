@@ -31,7 +31,6 @@ const placeholder = (slug: string, marketplace: Marketplace): AffiliateLink => (
   affiliateUrl: `https://example.com/aff/${marketplace}/${slug}`,
 });
 
-
 export const products: Product[] = [
   {
     id: "android-tv-box-4k",

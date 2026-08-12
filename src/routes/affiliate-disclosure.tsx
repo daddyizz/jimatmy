@@ -23,7 +23,11 @@ export const Route = createFileRoute("/affiliate-disclosure")({
 function AffiliateDisclosurePage() {
   return (
     <>
-      <PageHeader eyebrow="Legal" title="Affiliate Disclosure" description="Ketelusan tentang cara laman ini dibiayai." />
+      <PageHeader
+        eyebrow="Legal"
+        title="Affiliate Disclosure"
+        description="Ketelusan tentang cara laman ini dibiayai."
+      />
       <div className="container-page max-w-3xl py-8">
         <Prose>
           <p>

@@ -23,7 +23,11 @@ export const Route = createFileRoute("/disclaimer")({
 function DisclaimerPage() {
   return (
     <>
-      <PageHeader eyebrow="Legal" title="Disclaimer" description="Sila baca sebelum membuat keputusan pembelian." />
+      <PageHeader
+        eyebrow="Legal"
+        title="Disclaimer"
+        description="Sila baca sebelum membuat keputusan pembelian."
+      />
       <div className="container-page max-w-3xl py-8">
         <Prose>
           <ul className="list-disc space-y-2 pl-5">
@@ -34,9 +38,8 @@ function DisclaimerPage() {
             <li>Keputusan kalkulator adalah anggaran untuk tujuan perancangan sahaja.</li>
           </ul>
           <p>
-            JimatMY tidak bertanggungjawab ke atas kerugian yang timbul daripada keputusan
-            pembelian berdasarkan maklumat di laman ini. Sila rujuk juga{" "}
-            <Link to="/terms">Terms</Link> dan{" "}
+            JimatMY tidak bertanggungjawab ke atas kerugian yang timbul daripada keputusan pembelian
+            berdasarkan maklumat di laman ini. Sila rujuk juga <Link to="/terms">Terms</Link> dan{" "}
             <Link to="/affiliate-disclosure">Affiliate Disclosure</Link>.
           </p>
         </Prose>

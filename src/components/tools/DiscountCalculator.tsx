@@ -106,9 +106,7 @@ export function DiscountCalculator() {
                     error ? "border-destructive" : "border-input"
                   }`}
                 >
-                  {f.suffix === "RM" && (
-                    <span className="text-sm text-muted-foreground">RM</span>
-                  )}
+                  {f.suffix === "RM" && <span className="text-sm text-muted-foreground">RM</span>}
                   <input
                     id={id}
                     inputMode="decimal"
@@ -125,9 +123,7 @@ export function DiscountCalculator() {
                   />
                   {f.suffix === "%" && <span className="text-sm text-muted-foreground">%</span>}
                 </div>
-                {f.hint && !error && (
-                  <p className="mt-1 text-xs text-muted-foreground">{f.hint}</p>
-                )}
+                {f.hint && !error && <p className="mt-1 text-xs text-muted-foreground">{f.hint}</p>}
                 {error && (
                   <p id={`${id}-error`} role="alert" className="mt-1 text-xs text-destructive">
                     {error}
@@ -151,7 +147,10 @@ export function DiscountCalculator() {
       <div className="lg:sticky lg:top-24 lg:self-start">
         <div className="rounded-2xl border border-primary/25 bg-primary-soft p-5 md:p-6">
           <p className="text-sm font-semibold text-accent-foreground">Anda Jimat</p>
-          <p aria-live="polite" className="mt-1 text-3xl font-extrabold text-primary-strong md:text-4xl">
+          <p
+            aria-live="polite"
+            className="mt-1 text-3xl font-extrabold text-primary-strong md:text-4xl"
+          >
             {formatRM(result.totalSaved)}
           </p>
           <p className="mt-1 text-sm text-accent-foreground">
@@ -181,7 +180,9 @@ export function DiscountCalculator() {
 function Row({ label, value, emphasis }: { label: string; value: string; emphasis?: boolean }) {
   return (
     <div className="flex items-center justify-between gap-4 py-2.5">
-      <dt className={`text-sm ${emphasis ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
+      <dt
+        className={`text-sm ${emphasis ? "font-semibold text-foreground" : "text-muted-foreground"}`}
+      >
         {label}
       </dt>
       <dd className={emphasis ? "text-lg font-extrabold text-foreground" : "text-sm font-medium"}>

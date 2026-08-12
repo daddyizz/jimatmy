@@ -58,3 +58,12 @@ export function resolveOutboundUrl(link: AffiliateLink): string {
 export function isAffiliateLink(link: AffiliateLink): boolean {
   return affiliateConfig[link.marketplace].enabled && Boolean(link.affiliateUrl);
 }
+
+/** Placeholder links must never be presented as real shop destinations. */
+export function isPlaceholderLink(link: AffiliateLink): boolean {
+  try {
+    return new URL(link.productUrl).hostname === "example.com";
+  } catch {
+    return true;
+  }
+}

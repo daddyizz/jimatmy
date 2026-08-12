@@ -49,7 +49,10 @@ function ToolsPage() {
       <div className="container-page py-8">
         <div className="grid gap-4 md:grid-cols-2">
           {tools.map((tool) => (
-            <div key={tool.to} className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-card">
+            <div
+              key={tool.to}
+              className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-card"
+            >
               <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary-soft text-primary-strong">
                 <tool.icon className="h-5 w-5" aria-hidden="true" />
               </span>

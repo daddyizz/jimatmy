@@ -9,9 +9,17 @@ export type Category = {
 export const categories: Category[] = [
   { slug: "gadget", label: "Gadget", description: "Elektronik, aksesori dan peranti pintar." },
   { slug: "home", label: "Home", description: "Barangan rumah dan dapur yang praktikal." },
-  { slug: "automotive", label: "Automotive", description: "Aksesori kereta dan penjagaan kenderaan." },
+  {
+    slug: "automotive",
+    label: "Automotive",
+    description: "Aksesori kereta dan penjagaan kenderaan.",
+  },
   { slug: "gaming", label: "Gaming", description: "Peranti dan aksesori untuk gamer." },
-  { slug: "lifestyle", label: "Lifestyle", description: "Gaya hidup harian, kesihatan dan fitness." },
+  {
+    slug: "lifestyle",
+    label: "Lifestyle",
+    description: "Gaya hidup harian, kesihatan dan fitness.",
+  },
 ];
 
 export const categoryLabel = (slug: CategorySlug) =>

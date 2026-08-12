@@ -4,7 +4,13 @@ import { analyticsConfig } from "@/data/site";
  * Placeholder ad slot. Renders nothing unless ads are enabled in config,
  * so the layout stays clean while no ad network is connected.
  */
-export function AdSlot({ label = "Advertisement", className = "" }: { label?: string; className?: string }) {
+export function AdSlot({
+  label = "Advertisement",
+  className = "",
+}: {
+  label?: string;
+  className?: string;
+}) {
   if (!analyticsConfig.adsEnabled) return null;
   return (
     <aside

@@ -14,7 +14,10 @@ export const Route = createFileRoute("/compare/$slug")({
   head: ({ params, loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Perbandingan tidak dijumpai — JimatMY" }, { name: "robots", content: "noindex" }],
+        meta: [
+          { title: "Perbandingan tidak dijumpai — JimatMY" },
+          { name: "robots", content: "noindex" },
+        ],
       };
     }
     const { comparison } = loaderData;
@@ -38,7 +41,12 @@ export const Route = createFileRoute("/compare/$slug")({
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: "/" },
               { "@type": "ListItem", position: 2, name: "Compare", item: "/compare" },
-              { "@type": "ListItem", position: 3, name: comparison.title, item: `/compare/${params.slug}` },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: comparison.title,
+                item: `/compare/${params.slug}`,
+              },
             ],
           }),
         },
@@ -53,7 +61,10 @@ function ComparisonNotFound() {
   return (
     <div className="container-page py-16 text-center">
       <h1 className="text-2xl font-extrabold">Perbandingan tidak dijumpai</h1>
-      <Link to="/compare" className="mt-4 inline-block font-semibold text-primary underline underline-offset-4">
+      <Link
+        to="/compare"
+        className="mt-4 inline-block font-semibold text-primary underline underline-offset-4"
+      >
         Lihat semua perbandingan
       </Link>
     </div>
@@ -65,7 +76,11 @@ function ComparisonPage() {
 
   return (
     <>
-      <PageHeader eyebrow={comparison.category} title={comparison.title} description={comparison.intro} />
+      <PageHeader
+        eyebrow={comparison.category}
+        title={comparison.title}
+        description={comparison.intro}
+      />
       <div className="container-page space-y-10 py-8">
         <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground">
           <Link to="/" className="hover:text-primary">

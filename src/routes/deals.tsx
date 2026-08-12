@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { PageHeader } from "@/components/layout/PageHeader";
@@ -58,6 +58,10 @@ function DealsPage() {
   const [priceRange, setPriceRange] = useState<(typeof priceRanges)[number]["value"]>("all");
   const [minDiscount, setMinDiscount] = useState(0);
   const [sort, setSort] = useState<SortValue>("popular");
+
+  useEffect(() => {
+    setCategory(initialCategory ?? "all");
+  }, [initialCategory]);
 
   const filtered = useMemo(() => {
     const range = priceRanges.find((r) => r.value === priceRange)!;

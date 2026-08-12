@@ -22,7 +22,11 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <>
-      <PageHeader eyebrow="Contact" title="Hubungi JimatMY" description="Kami menghargai cadangan dan pembetulan daripada pembaca." />
+      <PageHeader
+        eyebrow="Contact"
+        title="Hubungi JimatMY"
+        description="Kami menghargai cadangan dan pembetulan daripada pembaca."
+      />
       <div className="container-page max-w-3xl py-8">
         <Prose>
           <p>
@@ -30,7 +34,7 @@ function ContactPage() {
             harga dan spesifikasi, sila hubungi kami melalui e-mel:
           </p>
           <p>
-            <a href="mailto:hello@jimatmy.example">hello@jimatmy.example</a>
+            <a href="mailto:dady.izz85@gmail.com">dady.izz85@gmail.com</a>
           </p>
           <h2>Kerjasama</h2>
           <p>
@@ -38,10 +42,7 @@ function ContactPage() {
             ketelusan kami: kandungan bertaja akan dilabel dengan jelas.
           </p>
           <h2>Masa maklum balas</h2>
-          <p>
-            Kami cuba membalas dalam masa 3–5 hari bekerja. Alamat e-mel di atas adalah placeholder
-            untuk versi awal laman ini.
-          </p>
+          <p>Kami cuba membalas dalam masa 3–5 hari bekerja.</p>
         </Prose>
       </div>
     </>
