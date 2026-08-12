@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DealsRouteImport } from './routes/deals'
+import { Route as CompareIndexRouteImport } from './routes/compare.index'
+import { Route as CompareSlugRouteImport } from './routes/compare.$slug'
+import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
 import { Route as ToolsDiscountCalculatorRouteImport } from './routes/tools.discount-calculator'
 import { Route as ToolsSellerProfitCalculatorRouteImport } from './routes/tools.seller-profit-calculator'
@@ -23,6 +27,26 @@ const IndexRoute = IndexRouteImport.update({
 const DealsRoute = DealsRouteImport.update({
   id: '/deals',
   path: '/deals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareIndexRoute = CompareIndexRouteImport.update({
+  id: '/compare/',
+  path: '/compare/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareSlugRoute = CompareSlugRouteImport.update({
+  id: '/compare/$slug',
+  path: '/compare/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/guides/',
+  path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/guides/$slug',
+  path: '/guides/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ToolsIndexRoute = ToolsIndexRouteImport.update({
@@ -45,23 +69,35 @@ const ToolsSellerProfitCalculatorRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/deals': typeof DealsRoute
+  '/compare/$slug': typeof CompareSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
   '/tools/seller-profit-calculator': typeof ToolsSellerProfitCalculatorRoute
+  '/compare/': typeof CompareIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/deals': typeof DealsRoute
+  '/compare/$slug': typeof CompareSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
   '/tools/seller-profit-calculator': typeof ToolsSellerProfitCalculatorRoute
+  '/compare': typeof CompareIndexRoute
+  '/guides': typeof GuidesIndexRoute
   '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/deals': typeof DealsRoute
+  '/compare/$slug': typeof CompareSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
   '/tools/seller-profit-calculator': typeof ToolsSellerProfitCalculatorRoute
+  '/compare/': typeof CompareIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
@@ -69,30 +105,46 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/deals'
+    | '/compare/$slug'
+    | '/guides/$slug'
     | '/tools/discount-calculator'
     | '/tools/seller-profit-calculator'
+    | '/compare/'
+    | '/guides/'
     | '/tools/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/deals'
+    | '/compare/$slug'
+    | '/guides/$slug'
     | '/tools/discount-calculator'
     | '/tools/seller-profit-calculator'
+    | '/compare'
+    | '/guides'
     | '/tools'
   id:
     | '__root__'
     | '/'
     | '/deals'
+    | '/compare/$slug'
+    | '/guides/$slug'
     | '/tools/discount-calculator'
     | '/tools/seller-profit-calculator'
+    | '/compare/'
+    | '/guides/'
     | '/tools/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DealsRoute: typeof DealsRoute
+  CompareSlugRoute: typeof CompareSlugRoute
+  GuidesSlugRoute: typeof GuidesSlugRoute
   ToolsDiscountCalculatorRoute: typeof ToolsDiscountCalculatorRoute
   ToolsSellerProfitCalculatorRoute: typeof ToolsSellerProfitCalculatorRoute
+  CompareIndexRoute: typeof CompareIndexRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
@@ -110,6 +162,34 @@ declare module '@tanstack/react-router' {
       path: '/deals'
       fullPath: '/deals'
       preLoaderRoute: typeof DealsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare/': {
+      id: '/compare/'
+      path: '/compare'
+      fullPath: '/compare/'
+      preLoaderRoute: typeof CompareIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare/$slug': {
+      id: '/compare/$slug'
+      path: '/compare/$slug'
+      fullPath: '/compare/$slug'
+      preLoaderRoute: typeof CompareSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/': {
+      id: '/guides/'
+      path: '/guides'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/guides/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/': {
@@ -139,8 +219,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DealsRoute: DealsRoute,
+  CompareSlugRoute: CompareSlugRoute,
+  GuidesSlugRoute: GuidesSlugRoute,
   ToolsDiscountCalculatorRoute: ToolsDiscountCalculatorRoute,
   ToolsSellerProfitCalculatorRoute: ToolsSellerProfitCalculatorRoute,
+  CompareIndexRoute: CompareIndexRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
   ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
