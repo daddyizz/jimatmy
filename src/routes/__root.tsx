@@ -13,7 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { site } from "@/data/site";
+import { analyticsConfig, site } from "@/data/site";
 
 function NotFoundComponent() {
   useEffect(() => {
@@ -113,6 +113,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
     scripts: [
+      {
+        src: `https://www.googletagmanager.com/gtag/js?id=${analyticsConfig.googleAnalyticsId}`,
+        async: true,
+      },
+      {
+        children: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${analyticsConfig.googleAnalyticsId}');`,
+      },
       {
         type: "application/ld+json",
         children: JSON.stringify({

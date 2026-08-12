@@ -14,7 +14,7 @@ export const site = {
 
 /** Analytics / ads configuration. Empty string = disabled. */
 export const analyticsConfig = {
-  googleAnalyticsId: "", // cth: "G-XXXXXXXXXX"
+  googleAnalyticsId: "G-SWCK227P5W",
   googleSearchConsoleVerification: "",
   adsenseClientId: "", // cth: "ca-pub-XXXXXXXXXXXXXXXX"
   metaPixelId: "",
