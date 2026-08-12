@@ -10,33 +10,259 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AffiliateDisclosureRouteImport } from './routes/affiliate-disclosure'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DealsRouteImport } from './routes/deals'
+import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as SavedRouteImport } from './routes/saved'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as CompareIndexRouteImport } from './routes/compare.index'
+import { Route as CompareSlugRouteImport } from './routes/compare.$slug'
+import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
+import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsDiscountCalculatorRouteImport } from './routes/tools.discount-calculator'
+import { Route as ToolsSellerProfitCalculatorRouteImport } from './routes/tools.seller-profit-calculator'
+import { Route as ApiPublicSitemapRouteImport } from './routes/api/public/sitemap'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AffiliateDisclosureRoute = AffiliateDisclosureRouteImport.update({
+  id: '/affiliate-disclosure',
+  path: '/affiliate-disclosure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DealsRoute = DealsRouteImport.update({
+  id: '/deals',
+  path: '/deals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisclaimerRoute = DisclaimerRouteImport.update({
+  id: '/disclaimer',
+  path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavedRoute = SavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareIndexRoute = CompareIndexRouteImport.update({
+  id: '/compare/',
+  path: '/compare/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareSlugRoute = CompareSlugRouteImport.update({
+  id: '/compare/$slug',
+  path: '/compare/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/guides/',
+  path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/guides/$slug',
+  path: '/guides/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/tools/',
+  path: '/tools/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsDiscountCalculatorRoute = ToolsDiscountCalculatorRouteImport.update({
+  id: '/tools/discount-calculator',
+  path: '/tools/discount-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsSellerProfitCalculatorRoute =
+  ToolsSellerProfitCalculatorRouteImport.update({
+    id: '/tools/seller-profit-calculator',
+    path: '/tools/seller-profit-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicSitemapRoute = ApiPublicSitemapRouteImport.update({
+  id: '/api/public/sitemap',
+  path: '/api/public/sitemap',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/affiliate-disclosure': typeof AffiliateDisclosureRoute
+  '/contact': typeof ContactRoute
+  '/deals': typeof DealsRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/privacy': typeof PrivacyRoute
+  '/saved': typeof SavedRoute
+  '/search': typeof SearchRoute
+  '/terms': typeof TermsRoute
+  '/compare/$slug': typeof CompareSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
+  '/tools/seller-profit-calculator': typeof ToolsSellerProfitCalculatorRoute
+  '/compare/': typeof CompareIndexRoute
+  '/guides/': typeof GuidesIndexRoute
+  '/tools/': typeof ToolsIndexRoute
+  '/api/public/sitemap': typeof ApiPublicSitemapRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/affiliate-disclosure': typeof AffiliateDisclosureRoute
+  '/contact': typeof ContactRoute
+  '/deals': typeof DealsRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/privacy': typeof PrivacyRoute
+  '/saved': typeof SavedRoute
+  '/search': typeof SearchRoute
+  '/terms': typeof TermsRoute
+  '/compare/$slug': typeof CompareSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
+  '/tools/seller-profit-calculator': typeof ToolsSellerProfitCalculatorRoute
+  '/compare': typeof CompareIndexRoute
+  '/guides': typeof GuidesIndexRoute
+  '/tools': typeof ToolsIndexRoute
+  '/api/public/sitemap': typeof ApiPublicSitemapRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/affiliate-disclosure': typeof AffiliateDisclosureRoute
+  '/contact': typeof ContactRoute
+  '/deals': typeof DealsRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/privacy': typeof PrivacyRoute
+  '/saved': typeof SavedRoute
+  '/search': typeof SearchRoute
+  '/terms': typeof TermsRoute
+  '/compare/$slug': typeof CompareSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
+  '/tools/seller-profit-calculator': typeof ToolsSellerProfitCalculatorRoute
+  '/compare/': typeof CompareIndexRoute
+  '/guides/': typeof GuidesIndexRoute
+  '/tools/': typeof ToolsIndexRoute
+  '/api/public/sitemap': typeof ApiPublicSitemapRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/affiliate-disclosure'
+    | '/contact'
+    | '/deals'
+    | '/disclaimer'
+    | '/privacy'
+    | '/saved'
+    | '/search'
+    | '/terms'
+    | '/compare/$slug'
+    | '/guides/$slug'
+    | '/tools/discount-calculator'
+    | '/tools/seller-profit-calculator'
+    | '/compare/'
+    | '/guides/'
+    | '/tools/'
+    | '/api/public/sitemap'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/affiliate-disclosure'
+    | '/contact'
+    | '/deals'
+    | '/disclaimer'
+    | '/privacy'
+    | '/saved'
+    | '/search'
+    | '/terms'
+    | '/compare/$slug'
+    | '/guides/$slug'
+    | '/tools/discount-calculator'
+    | '/tools/seller-profit-calculator'
+    | '/compare'
+    | '/guides'
+    | '/tools'
+    | '/api/public/sitemap'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/affiliate-disclosure'
+    | '/contact'
+    | '/deals'
+    | '/disclaimer'
+    | '/privacy'
+    | '/saved'
+    | '/search'
+    | '/terms'
+    | '/compare/$slug'
+    | '/guides/$slug'
+    | '/tools/discount-calculator'
+    | '/tools/seller-profit-calculator'
+    | '/compare/'
+    | '/guides/'
+    | '/tools/'
+    | '/api/public/sitemap'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AffiliateDisclosureRoute: typeof AffiliateDisclosureRoute
+  ContactRoute: typeof ContactRoute
+  DealsRoute: typeof DealsRoute
+  DisclaimerRoute: typeof DisclaimerRoute
+  PrivacyRoute: typeof PrivacyRoute
+  SavedRoute: typeof SavedRoute
+  SearchRoute: typeof SearchRoute
+  TermsRoute: typeof TermsRoute
+  CompareSlugRoute: typeof CompareSlugRoute
+  GuidesSlugRoute: typeof GuidesSlugRoute
+  ToolsDiscountCalculatorRoute: typeof ToolsDiscountCalculatorRoute
+  ToolsSellerProfitCalculatorRoute: typeof ToolsSellerProfitCalculatorRoute
+  CompareIndexRoute: typeof CompareIndexRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
+  ApiPublicSitemapRoute: typeof ApiPublicSitemapRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +274,148 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/affiliate-disclosure': {
+      id: '/affiliate-disclosure'
+      path: '/affiliate-disclosure'
+      fullPath: '/affiliate-disclosure'
+      preLoaderRoute: typeof AffiliateDisclosureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deals': {
+      id: '/deals'
+      path: '/deals'
+      fullPath: '/deals'
+      preLoaderRoute: typeof DealsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disclaimer': {
+      id: '/disclaimer'
+      path: '/disclaimer'
+      fullPath: '/disclaimer'
+      preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saved': {
+      id: '/saved'
+      path: '/saved'
+      fullPath: '/saved'
+      preLoaderRoute: typeof SavedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare/': {
+      id: '/compare/'
+      path: '/compare'
+      fullPath: '/compare/'
+      preLoaderRoute: typeof CompareIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare/$slug': {
+      id: '/compare/$slug'
+      path: '/compare/$slug'
+      fullPath: '/compare/$slug'
+      preLoaderRoute: typeof CompareSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/': {
+      id: '/guides/'
+      path: '/guides'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/guides/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/': {
+      id: '/tools/'
+      path: '/tools'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/discount-calculator': {
+      id: '/tools/discount-calculator'
+      path: '/tools/discount-calculator'
+      fullPath: '/tools/discount-calculator'
+      preLoaderRoute: typeof ToolsDiscountCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/seller-profit-calculator': {
+      id: '/tools/seller-profit-calculator'
+      path: '/tools/seller-profit-calculator'
+      fullPath: '/tools/seller-profit-calculator'
+      preLoaderRoute: typeof ToolsSellerProfitCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/sitemap': {
+      id: '/api/public/sitemap'
+      path: '/api/public/sitemap'
+      fullPath: '/api/public/sitemap'
+      preLoaderRoute: typeof ApiPublicSitemapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AffiliateDisclosureRoute: AffiliateDisclosureRoute,
+  ContactRoute: ContactRoute,
+  DealsRoute: DealsRoute,
+  DisclaimerRoute: DisclaimerRoute,
+  PrivacyRoute: PrivacyRoute,
+  SavedRoute: SavedRoute,
+  SearchRoute: SearchRoute,
+  TermsRoute: TermsRoute,
+  CompareSlugRoute: CompareSlugRoute,
+  GuidesSlugRoute: GuidesSlugRoute,
+  ToolsDiscountCalculatorRoute: ToolsDiscountCalculatorRoute,
+  ToolsSellerProfitCalculatorRoute: ToolsSellerProfitCalculatorRoute,
+  CompareIndexRoute: CompareIndexRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
+  ApiPublicSitemapRoute: ApiPublicSitemapRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
