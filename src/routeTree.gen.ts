@@ -10,33 +10,90 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DealsRouteImport } from './routes/deals'
+import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsDiscountCalculatorRouteImport } from './routes/tools.discount-calculator'
+import { Route as ToolsSellerProfitCalculatorRouteImport } from './routes/tools.seller-profit-calculator'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DealsRoute = DealsRouteImport.update({
+  id: '/deals',
+  path: '/deals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/tools/',
+  path: '/tools/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsDiscountCalculatorRoute = ToolsDiscountCalculatorRouteImport.update({
+  id: '/tools/discount-calculator',
+  path: '/tools/discount-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsSellerProfitCalculatorRoute =
+  ToolsSellerProfitCalculatorRouteImport.update({
+    id: '/tools/seller-profit-calculator',
+    path: '/tools/seller-profit-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/deals': typeof DealsRoute
+  '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
+  '/tools/seller-profit-calculator': typeof ToolsSellerProfitCalculatorRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/deals': typeof DealsRoute
+  '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
+  '/tools/seller-profit-calculator': typeof ToolsSellerProfitCalculatorRoute
+  '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/deals': typeof DealsRoute
+  '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
+  '/tools/seller-profit-calculator': typeof ToolsSellerProfitCalculatorRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/deals'
+    | '/tools/discount-calculator'
+    | '/tools/seller-profit-calculator'
+    | '/tools/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/deals'
+    | '/tools/discount-calculator'
+    | '/tools/seller-profit-calculator'
+    | '/tools'
+  id:
+    | '__root__'
+    | '/'
+    | '/deals'
+    | '/tools/discount-calculator'
+    | '/tools/seller-profit-calculator'
+    | '/tools/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DealsRoute: typeof DealsRoute
+  ToolsDiscountCalculatorRoute: typeof ToolsDiscountCalculatorRoute
+  ToolsSellerProfitCalculatorRoute: typeof ToolsSellerProfitCalculatorRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +105,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/deals': {
+      id: '/deals'
+      path: '/deals'
+      fullPath: '/deals'
+      preLoaderRoute: typeof DealsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/': {
+      id: '/tools/'
+      path: '/tools'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/discount-calculator': {
+      id: '/tools/discount-calculator'
+      path: '/tools/discount-calculator'
+      fullPath: '/tools/discount-calculator'
+      preLoaderRoute: typeof ToolsDiscountCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/seller-profit-calculator': {
+      id: '/tools/seller-profit-calculator'
+      path: '/tools/seller-profit-calculator'
+      fullPath: '/tools/seller-profit-calculator'
+      preLoaderRoute: typeof ToolsSellerProfitCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DealsRoute: DealsRoute,
+  ToolsDiscountCalculatorRoute: ToolsDiscountCalculatorRoute,
+  ToolsSellerProfitCalculatorRoute: ToolsSellerProfitCalculatorRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
