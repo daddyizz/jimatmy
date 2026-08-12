@@ -3,7 +3,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { AdSlot } from "@/components/layout/AdSlot";
 import { ProductCard } from "@/components/products/ProductCard";
-import { getGuide } from "@/data/guides";
+import { getGuide, type Guide } from "@/data/guides";
 import { getProduct } from "@/data/products";
 import { getComparison } from "@/data/comparisons";
 
@@ -78,7 +78,7 @@ function GuideNotFound() {
 }
 
 function GuidePage() {
-  const { guide } = Route.useLoaderData();
+  const { guide } = Route.useLoaderData() as { guide: Guide };
   const relatedProducts = (guide.relatedProductIds ?? [])
     .map((id) => getProduct(id))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
