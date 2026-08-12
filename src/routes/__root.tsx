@@ -16,6 +16,20 @@ import { Footer } from "@/components/layout/Footer";
 import { site } from "@/data/site";
 
 function NotFoundComponent() {
+  useEffect(() => {
+    const previousTitle = document.title;
+    const robots = document.createElement("meta");
+    robots.name = "robots";
+    robots.content = "noindex, nofollow";
+    document.head.appendChild(robots);
+    document.title = "Halaman Tidak Dijumpai — JimatMY";
+
+    return () => {
+      robots.remove();
+      document.title = previousTitle;
+    };
+  }, []);
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -106,7 +120,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "Organization",
           name: "JimatMY",
           description: site.description,
-          url: "/",
+          url: site.url,
         }),
       },
     ],

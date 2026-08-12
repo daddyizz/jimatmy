@@ -1,14 +1,14 @@
 import type { CategorySlug } from "./categories";
 import type { AffiliateLink, Marketplace } from "./affiliate";
 
-import blankCarPerfume from "@/assets/products/blank-car-perfume.png";
-import peroduaGrSteering from "@/assets/products/perodua-gr-steering.png";
-import bajuPahlawanMerdeka from "@/assets/products/baju-pahlawan-merdeka.png";
-import eagladeRidingPants from "@/assets/products/eaglade-riding-pants.png";
-import ktmV2Jacket from "@/assets/products/ktm-v2-jacket.png";
-import amazfitBip6 from "@/assets/products/amazfit-bip-6.png";
-import kingstonFuryBeast from "@/assets/products/kingston-fury-beast-ddr4.png";
-import kermitCampingChair from "@/assets/products/kermit-camping-chair.png";
+import blankCarPerfume from "@/assets/products/blank-car-perfume.webp";
+import peroduaGrSteering from "@/assets/products/perodua-gr-steering.webp";
+import bajuPahlawanMerdeka from "@/assets/products/baju-pahlawan-merdeka.webp";
+import eagladeRidingPants from "@/assets/products/eaglade-riding-pants.webp";
+import ktmV2Jacket from "@/assets/products/ktm-v2-jacket.webp";
+import amazfitBip6 from "@/assets/products/amazfit-bip-6.webp";
+import kingstonFuryBeast from "@/assets/products/kingston-fury-beast-ddr4.webp";
+import kermitCampingChair from "@/assets/products/kermit-camping-chair.webp";
 
 export type Product = {
   id: string;

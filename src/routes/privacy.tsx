@@ -26,7 +26,7 @@ function PrivacyPage() {
       <PageHeader
         eyebrow="Legal"
         title="Privacy Policy"
-        description="Versi awal. Akan dikemas kini apabila perkhidmatan baharu ditambah."
+        description="Ketahui cara JimatMY mengendalikan data, cookies, pautan affiliate dan perkhidmatan pihak ketiga."
       />
       <div className="container-page max-w-3xl py-8">
         <Prose>

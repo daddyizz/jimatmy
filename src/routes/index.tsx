@@ -17,9 +17,9 @@ export const Route = createFileRoute("/")({
       { name: "description", content: site.description },
       { property: "og:title", content: "JimatMY — Beli Bijak. Jimat Lebih." },
       { property: "og:description", content: site.description },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: site.url },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: site.url }],
     scripts: [
       {
         type: "application/ld+json",
@@ -27,10 +27,10 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "JimatMY",
-          url: "/",
+          url: site.url,
           potentialAction: {
             "@type": "SearchAction",
-            target: "/search?q={search_term_string}",
+            target: `${site.url}/search?q={search_term_string}`,
             "query-input": "required name=search_term_string",
           },
         }),
@@ -136,7 +136,7 @@ function HomePage() {
           <SectionHeading
             id="deals-heading"
             title="Deal Pilihan"
-            description="Contoh produk popular mengikut kategori. Sentiasa semak harga terkini di kedai."
+            description="Produk pilihan semasa mengikut kategori. Sentiasa semak harga terkini di kedai."
             action={{ to: "/deals", label: "Lihat semua deal" }}
           />
           <div className="mt-6">

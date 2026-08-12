@@ -49,7 +49,9 @@ const priceRanges = [
   { value: "200-plus", label: "RM200 ke atas", min: 200, max: Infinity },
 ] as const;
 
-const marketplaces: Marketplace[] = ["shopee", "tiktok", "lazada"];
+const marketplaces: Marketplace[] = Array.from(
+  new Set(products.map((product) => product.marketplace)),
+);
 
 function DealsPage() {
   const { category: initialCategory } = Route.useSearch();

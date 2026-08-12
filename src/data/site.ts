@@ -4,6 +4,7 @@
  */
 export const site = {
   name: "JimatMY",
+  url: "https://jimatmy.lovable.app",
   tagline: "Beli Bijak. Jimat Lebih.",
   description:
     "JimatMY bantu pengguna Malaysia kira harga sebenar, banding produk dan cari deal yang lebih berbaloi sebelum membeli.",
