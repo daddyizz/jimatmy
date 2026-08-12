@@ -25,12 +25,12 @@ export type Product = {
   link: AffiliateLink;
 };
 
-const placeholder = (slug: string, marketplace: Marketplace) => ({
+const placeholder = (slug: string, marketplace: Marketplace): AffiliateLink => ({
   marketplace,
   productUrl: `https://example.com/${marketplace}/${slug}`,
   affiliateUrl: `https://example.com/aff/${marketplace}/${slug}`,
-  source: undefined,
 });
+
 
 export const products: Product[] = [
   {
