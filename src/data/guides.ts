@@ -166,7 +166,7 @@ export const guides: Guide[] = [
         heading: "Contoh pengiraan",
         body: [
           "Harga asal RM229, diskaun 20% (RM45.80), voucher RM15, penghantaran RM8. Harga akhir = RM229 − RM45.80 − RM15 + RM8 = RM176.20.",
-          "Jimat sebenar berbanding harga asal ialah RM52.80, atau kira-kira 23% diskaun efektif selepas mengambil kira penghantaran.",
+          "Jumlah jimat daripada diskaun dan voucher ialah RM60.80 (diskaun efektif kira-kira 26.6%). Selepas ditolak kos penghantaran RM8, anda masih membayar RM52.80 kurang daripada harga asal.",
         ],
       },
       {
