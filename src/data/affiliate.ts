@@ -22,7 +22,7 @@ type MarketplaceConfig = {
 };
 
 export const affiliateConfig: Record<Marketplace, MarketplaceConfig> = {
-  shopee: { trackingParam: "utm_content", trackingId: "JIMATMY_PLACEHOLDER", enabled: false },
+  shopee: { trackingParam: "utm_content", trackingId: "", enabled: true },
   tiktok: { trackingParam: "sub_id", trackingId: "JIMATMY_PLACEHOLDER", enabled: false },
   lazada: { trackingParam: "sub_aff_id", trackingId: "JIMATMY_PLACEHOLDER", enabled: false },
   other: { trackingParam: "ref", trackingId: "JIMATMY_PLACEHOLDER", enabled: false },
@@ -47,7 +47,8 @@ export function resolveOutboundUrl(link: AffiliateLink): string {
   if (!config.enabled) return base;
   try {
     const url = new URL(base);
-    url.searchParams.set(config.trackingParam, link.source ?? config.trackingId);
+    const trackingId = link.source ?? config.trackingId;
+    if (trackingId) url.searchParams.set(config.trackingParam, trackingId);
     return url.toString();
   } catch {
     return base;

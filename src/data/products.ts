@@ -1,9 +1,9 @@
 import type { CategorySlug } from "./categories";
 import type { AffiliateLink, Marketplace } from "./affiliate";
 
-import tvBox from "@/assets/products/tv-box.jpg";
-import earbuds from "@/assets/products/earbuds.jpg";
-import powerBank from "@/assets/products/power-bank.jpg";
+import blankCarPerfume from "@/assets/products/blank-car-perfume.png";
+import peroduaGrSteering from "@/assets/products/perodua-gr-steering.png";
+import bajuPahlawanMerdeka from "@/assets/products/baju-pahlawan-merdeka.png";
 import airFryer from "@/assets/products/air-fryer.jpg";
 import dashcam from "@/assets/products/dashcam.jpg";
 import gamingMouse from "@/assets/products/gaming-mouse.jpg";
@@ -33,43 +33,55 @@ const placeholder = (slug: string, marketplace: Marketplace): AffiliateLink => (
 
 export const products: Product[] = [
   {
-    id: "android-tv-box-4k",
-    name: "Android TV Box 4K (2GB/16GB)",
-    shortDescription: "TV box ringkas untuk streaming 4K pada TV lama.",
-    image: tvBox,
-    category: "gadget",
+    id: "blank-car-perfume",
+    name: "Blank Perfume Car Freshener 50ml",
+    shortDescription: "Pewangi kereta beraroma buah dengan pilihan Honeydew dan Peach.",
+    image: blankCarPerfume,
+    category: "automotive",
     marketplace: "shopee",
-    price: 149,
-    previousPrice: 229,
+    price: 32.99,
+    previousPrice: 122.45,
     popularity: 96,
     featured: true,
-    link: placeholder("android-tv-box-4k", "shopee"),
+    link: {
+      marketplace: "shopee",
+      productUrl: "https://s.shopee.com.my/LmNrbzY8v",
+      affiliateUrl: "https://s.shopee.com.my/LmNrbzY8v",
+    },
   },
   {
-    id: "tws-earbuds-anc",
-    name: "TWS Earbuds ANC Bluetooth 5.3",
-    shortDescription: "Earbuds ANC dengan bateri sehingga 30 jam.",
-    image: earbuds,
-    category: "gadget",
-    marketplace: "tiktok",
-    price: 89,
-    previousPrice: 159,
+    id: "perodua-gr-steering",
+    name: "Perodua GR Steering",
+    shortDescription: "Stereng gaya GR untuk model Myvi, Bezza, Axia dan Alza terpilih.",
+    image: peroduaGrSteering,
+    category: "automotive",
+    marketplace: "shopee",
+    price: 1494,
+    previousPrice: 1494,
     popularity: 91,
     featured: true,
-    link: placeholder("tws-earbuds-anc", "tiktok"),
+    link: {
+      marketplace: "shopee",
+      productUrl: "https://s.shopee.com.my/9ANmO6OHEx",
+      affiliateUrl: "https://s.shopee.com.my/9ANmO6OHEx",
+    },
   },
   {
-    id: "power-bank-20000",
-    name: "Power Bank 20000mAh 22.5W",
-    shortDescription: "Fast charging dengan paparan digital dan 3 port.",
-    image: powerBank,
-    category: "gadget",
+    id: "baju-pahlawan-merdeka-kanak-kanak",
+    name: "Baju Pahlawan Merdeka Melayu Kanak-kanak",
+    shortDescription: "Pilihan warna dan saiz untuk sambutan Merdeka. Harga bermula RM8.80.",
+    image: bajuPahlawanMerdeka,
+    category: "lifestyle",
     marketplace: "shopee",
-    price: 69,
-    previousPrice: 119,
+    price: 8.8,
+    previousPrice: 8.8,
     popularity: 88,
     featured: true,
-    link: placeholder("power-bank-20000", "shopee"),
+    link: {
+      marketplace: "shopee",
+      productUrl: "https://s.shopee.com.my/3LPzRVmL7n",
+      affiliateUrl: "https://s.shopee.com.my/3LPzRVmL7n",
+    },
   },
   {
     id: "air-fryer-6l",

@@ -72,9 +72,11 @@ export function ProductCard({ product, eager = false }: Props) {
             <span className="text-lg font-extrabold text-foreground">
               {formatRM(product.price)}
             </span>
-            <span className="text-sm text-muted-foreground line-through">
-              {formatRM(product.previousPrice)}
-            </span>
+            {product.previousPrice > product.price && (
+              <span className="text-sm text-muted-foreground line-through">
+                {formatRM(product.previousPrice)}
+              </span>
+            )}
           </div>
           {placeholder ? (
             <span
