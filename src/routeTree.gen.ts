@@ -10,7 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DealsRouteImport } from './routes/deals'
+import { Route as SavedRouteImport } from './routes/saved'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as CompareIndexRouteImport } from './routes/compare.index'
 import { Route as CompareSlugRouteImport } from './routes/compare.$slug'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
@@ -24,9 +28,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DealsRoute = DealsRouteImport.update({
   id: '/deals',
   path: '/deals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavedRoute = SavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompareIndexRoute = CompareIndexRouteImport.update({
@@ -68,7 +92,11 @@ const ToolsSellerProfitCalculatorRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/deals': typeof DealsRoute
+  '/saved': typeof SavedRoute
+  '/search': typeof SearchRoute
   '/compare/$slug': typeof CompareSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
@@ -79,7 +107,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/deals': typeof DealsRoute
+  '/saved': typeof SavedRoute
+  '/search': typeof SearchRoute
   '/compare/$slug': typeof CompareSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
@@ -91,7 +123,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/deals': typeof DealsRoute
+  '/saved': typeof SavedRoute
+  '/search': typeof SearchRoute
   '/compare/$slug': typeof CompareSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
@@ -104,7 +140,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/contact'
     | '/deals'
+    | '/saved'
+    | '/search'
     | '/compare/$slug'
     | '/guides/$slug'
     | '/tools/discount-calculator'
@@ -115,7 +155,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/contact'
     | '/deals'
+    | '/saved'
+    | '/search'
     | '/compare/$slug'
     | '/guides/$slug'
     | '/tools/discount-calculator'
@@ -126,7 +170,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/contact'
     | '/deals'
+    | '/saved'
+    | '/search'
     | '/compare/$slug'
     | '/guides/$slug'
     | '/tools/discount-calculator'
@@ -138,7 +186,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
   DealsRoute: typeof DealsRoute
+  SavedRoute: typeof SavedRoute
+  SearchRoute: typeof SearchRoute
   CompareSlugRoute: typeof CompareSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   ToolsDiscountCalculatorRoute: typeof ToolsDiscountCalculatorRoute
@@ -157,11 +209,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/deals': {
       id: '/deals'
       path: '/deals'
       fullPath: '/deals'
       preLoaderRoute: typeof DealsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saved': {
+      id: '/saved'
+      path: '/saved'
+      fullPath: '/saved'
+      preLoaderRoute: typeof SavedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/compare/': {
@@ -218,7 +298,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
   DealsRoute: DealsRoute,
+  SavedRoute: SavedRoute,
+  SearchRoute: SearchRoute,
   CompareSlugRoute: CompareSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   ToolsDiscountCalculatorRoute: ToolsDiscountCalculatorRoute,
