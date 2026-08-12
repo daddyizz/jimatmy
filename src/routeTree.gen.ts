@@ -26,6 +26,7 @@ import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
 import { Route as ToolsDiscountCalculatorRouteImport } from './routes/tools.discount-calculator'
 import { Route as ToolsSellerProfitCalculatorRouteImport } from './routes/tools.seller-profit-calculator'
+import { Route as ApiPublicSitemapRouteImport } from './routes/api/public/sitemap'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -113,6 +114,11 @@ const ToolsSellerProfitCalculatorRoute =
     path: '/tools/seller-profit-calculator',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicSitemapRoute = ApiPublicSitemapRouteImport.update({
+  id: '/api/public/sitemap',
+  path: '/api/public/sitemap',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -132,6 +138,7 @@ export interface FileRoutesByFullPath {
   '/compare/': typeof CompareIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/api/public/sitemap': typeof ApiPublicSitemapRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/compare': typeof CompareIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/tools': typeof ToolsIndexRoute
+  '/api/public/sitemap': typeof ApiPublicSitemapRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -171,6 +179,7 @@ export interface FileRoutesById {
   '/compare/': typeof CompareIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/api/public/sitemap': typeof ApiPublicSitemapRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -192,6 +201,7 @@ export interface FileRouteTypes {
     | '/compare/'
     | '/guides/'
     | '/tools/'
+    | '/api/public/sitemap'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -211,6 +221,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/guides'
     | '/tools'
+    | '/api/public/sitemap'
   id:
     | '__root__'
     | '/'
@@ -230,6 +241,7 @@ export interface FileRouteTypes {
     | '/compare/'
     | '/guides/'
     | '/tools/'
+    | '/api/public/sitemap'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -250,6 +262,7 @@ export interface RootRouteChildren {
   CompareIndexRoute: typeof CompareIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
+  ApiPublicSitemapRoute: typeof ApiPublicSitemapRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -373,6 +386,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsSellerProfitCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/sitemap': {
+      id: '/api/public/sitemap'
+      path: '/api/public/sitemap'
+      fullPath: '/api/public/sitemap'
+      preLoaderRoute: typeof ApiPublicSitemapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -394,6 +414,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompareIndexRoute: CompareIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   ToolsIndexRoute: ToolsIndexRoute,
+  ApiPublicSitemapRoute: ApiPublicSitemapRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
