@@ -4,11 +4,11 @@ import type { AffiliateLink, Marketplace } from "./affiliate";
 import blankCarPerfume from "@/assets/products/blank-car-perfume.png";
 import peroduaGrSteering from "@/assets/products/perodua-gr-steering.png";
 import bajuPahlawanMerdeka from "@/assets/products/baju-pahlawan-merdeka.png";
-import airFryer from "@/assets/products/air-fryer.jpg";
-import dashcam from "@/assets/products/dashcam.jpg";
-import gamingMouse from "@/assets/products/gaming-mouse.jpg";
-import smartWatch from "@/assets/products/smart-watch.jpg";
-import vacuum from "@/assets/products/vacuum.jpg";
+import eagladeRidingPants from "@/assets/products/eaglade-riding-pants.png";
+import ktmV2Jacket from "@/assets/products/ktm-v2-jacket.png";
+import amazfitBip6 from "@/assets/products/amazfit-bip-6.png";
+import kingstonFuryBeast from "@/assets/products/kingston-fury-beast-ddr4.png";
+import kermitCampingChair from "@/assets/products/kermit-camping-chair.png";
 
 export type Product = {
   id: string;
@@ -24,12 +24,6 @@ export type Product = {
   featured?: boolean;
   link: AffiliateLink;
 };
-
-const placeholder = (slug: string, marketplace: Marketplace): AffiliateLink => ({
-  marketplace,
-  productUrl: `https://example.com/${marketplace}/${slug}`,
-  affiliateUrl: `https://example.com/aff/${marketplace}/${slug}`,
-});
 
 export const products: Product[] = [
   {
@@ -84,65 +78,85 @@ export const products: Product[] = [
     },
   },
   {
-    id: "air-fryer-6l",
-    name: "Air Fryer Digital 6L",
-    shortDescription: "Muat untuk keluarga, 8 preset masakan.",
-    image: airFryer,
-    category: "home",
-    marketplace: "lazada",
-    price: 199,
-    previousPrice: 329,
-    popularity: 84,
-    featured: true,
-    link: placeholder("air-fryer-6l", "lazada"),
-  },
-  {
-    id: "dashcam-2k",
-    name: "Dash Cam 2K WiFi",
-    shortDescription: "Rakaman 2K, mod parkir dan sokongan aplikasi.",
-    image: dashcam,
+    id: "eaglade-riding-pants",
+    name: "EAGLADE Motorcycle Riding Pants",
+    shortDescription: "Seluar motosikal quick dry 4-way stretch. Harga bermula RM75.99.",
+    image: eagladeRidingPants,
     category: "automotive",
     marketplace: "shopee",
-    price: 159,
-    previousPrice: 249,
-    popularity: 76,
-    link: placeholder("dashcam-2k", "shopee"),
+    price: 75.99,
+    previousPrice: 75.99,
+    popularity: 84,
+    featured: true,
+    link: {
+      marketplace: "shopee",
+      productUrl: "https://s.shopee.com.my/8KofPoEHwL",
+      affiliateUrl: "https://s.shopee.com.my/8KofPoEHwL",
+    },
   },
   {
-    id: "gaming-mouse-wireless",
-    name: "Wireless Gaming Mouse 8000 DPI",
-    shortDescription: "Latency rendah, bateri tahan lama untuk gaming harian.",
-    image: gamingMouse,
-    category: "gaming",
-    marketplace: "tiktok",
-    price: 79,
-    previousPrice: 129,
-    popularity: 72,
-    link: placeholder("gaming-mouse-wireless", "tiktok"),
-  },
-  {
-    id: "smart-watch-amoled",
-    name: "Smart Watch AMOLED Bluetooth Call",
-    shortDescription: "Pantau langkah, tidur dan kadar jantung.",
-    image: smartWatch,
+    id: "ktm-v2-waterproof-jacket",
+    name: "KTM V2 Waterproof Sport Jacket",
+    shortDescription: "Jaket sukan bertudung dengan beberapa pilihan warna. Harga bermula RM57.75.",
+    image: ktmV2Jacket,
     category: "lifestyle",
     marketplace: "shopee",
-    price: 129,
-    previousPrice: 199,
-    popularity: 68,
-    link: placeholder("smart-watch-amoled", "shopee"),
+    price: 57.75,
+    previousPrice: 57.75,
+    popularity: 76,
+    link: {
+      marketplace: "shopee",
+      productUrl: "https://s.shopee.com.my/70JHpPobGp",
+      affiliateUrl: "https://s.shopee.com.my/70JHpPobGp",
+    },
   },
   {
-    id: "cordless-vacuum",
-    name: "Cordless Stick Vacuum 18kPa",
-    shortDescription: "Ringan, sesuai untuk rumah teres dan apartment.",
-    image: vacuum,
-    category: "home",
-    marketplace: "lazada",
-    price: 289,
-    previousPrice: 499,
+    id: "amazfit-bip-6",
+    name: "Amazfit Bip 6 Smart Watch",
+    shortDescription: "Jam pintar original dengan beberapa pilihan warna. Harga bermula RM399.",
+    image: amazfitBip6,
+    category: "lifestyle",
+    marketplace: "shopee",
+    price: 399,
+    previousPrice: 399,
+    popularity: 72,
+    link: {
+      marketplace: "shopee",
+      productUrl: "https://s.shopee.com.my/1VyLHMBLqG",
+      affiliateUrl: "https://s.shopee.com.my/1VyLHMBLqG",
+    },
+  },
+  {
+    id: "kingston-fury-beast-ddr4",
+    name: "Kingston Fury Beast DDR4 Desktop RAM",
+    shortDescription: "Pilihan 4GB, 8GB dan 16GB dengan pelbagai kelajuan. Harga bermula RM335.",
+    image: kingstonFuryBeast,
+    category: "gaming",
+    marketplace: "shopee",
+    price: 335,
+    previousPrice: 335,
+    popularity: 68,
+    link: {
+      marketplace: "shopee",
+      productUrl: "https://s.shopee.com.my/6VN1Ec7t45",
+      affiliateUrl: "https://s.shopee.com.my/6VN1Ec7t45",
+    },
+  },
+  {
+    id: "magic-pocket-kermit-camping-chair",
+    name: "Magic Pocket Kermit Double Camping Chair",
+    shortDescription: "Kerusi lipat mudah alih 2–3 tempat duduk. Harga bermula RM40.60.",
+    image: kermitCampingChair,
+    category: "lifestyle",
+    marketplace: "shopee",
+    price: 40.6,
+    previousPrice: 40.6,
     popularity: 64,
-    link: placeholder("cordless-vacuum", "lazada"),
+    link: {
+      marketplace: "shopee",
+      productUrl: "https://s.shopee.com.my/2BE24kDIY5",
+      affiliateUrl: "https://s.shopee.com.my/2BE24kDIY5",
+    },
   },
 ];
 
