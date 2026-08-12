@@ -312,6 +312,479 @@ export const guides: Guide[] = [
       },
     ],
   },
+  {
+    slug: "cara-pilih-smartwatch-untuk-kegunaan-harian",
+    title: "Cara Pilih Smartwatch Untuk Kegunaan Harian",
+    description:
+      "Panduan memilih smartwatch berdasarkan keserasian telefon, bateri, kesihatan, GPS dan kegunaan sebenar.",
+    category: "Gadget",
+    readingMinutes: 7,
+    updated: "2026-08-13",
+    intro:
+      "Smartwatch yang sesuai bukan semestinya model paling mahal. Pilihan terbaik bergantung pada telefon yang digunakan, aktiviti harian dan ciri yang benar-benar diperlukan.",
+    sections: [
+      {
+        id: "keserasian",
+        heading: "1. Semak keserasian dengan telefon",
+        body: [
+          "Pastikan aplikasi jam menyokong versi Android atau iOS pada telefon anda. Sesetengah fungsi seperti membalas mesej, panggilan dan pembayaran mungkin terhad mengikut sistem operasi.",
+          "Semak juga reputasi aplikasi pendamping kerana data kesihatan, kemas kini firmware dan tetapan jam bergantung padanya.",
+        ],
+      },
+      {
+        id: "ciri",
+        heading: "2. Pilih ciri berdasarkan rutin",
+        body: [
+          "Untuk berjalan dan berlari, GPS terbina dalam lebih berguna daripada ratusan mod sukan. Untuk kegunaan pejabat, notifikasi yang stabil dan paparan jelas lebih penting.",
+        ],
+        bullets: [
+          "GPS terbina dalam untuk rekod laluan tanpa telefon",
+          "Ketahanan air yang sesuai untuk senaman dan hujan",
+          "Sensor kesihatan sebagai rujukan kecergasan, bukan diagnosis perubatan",
+        ],
+      },
+      {
+        id: "bateri",
+        heading: "3. Nilai bateri dalam penggunaan sebenar",
+        body: [
+          "Angka bateri pengeluar biasanya bergantung pada tetapan ringan. Always-on display, GPS, panggilan Bluetooth dan pemantauan berterusan boleh memendekkan tempoh penggunaan.",
+          "Pilih jam yang masih sesuai dengan rutin pengecasan anda selepas ciri utama diaktifkan.",
+        ],
+      },
+      {
+        id: "kos",
+        heading: "4. Ambil kira kos selepas pembelian",
+        body: [
+          "Semak harga tali ganti, kabel pengecas khusus, pelindung skrin dan waranti. Model murah boleh menjadi mahal jika aksesori sukar dicari.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Adakah bacaan kesihatan smartwatch tepat?",
+        answer:
+          "Ia berguna untuk melihat trend umum, tetapi bukan pengganti alat perubatan atau pemeriksaan doktor.",
+      },
+      {
+        question: "Perlukah smartwatch mempunyai GPS terbina dalam?",
+        answer:
+          "Ya jika anda mahu merekod laluan tanpa membawa telefon. Jika telefon sentiasa dibawa, connected GPS mungkin mencukupi.",
+      },
+    ],
+    relatedProductIds: ["amazfit-bip-6"],
+  },
+  {
+    slug: "panduan-upgrade-ram-ddr4-desktop",
+    title: "Panduan Upgrade RAM DDR4 Desktop Tanpa Tersalah Beli",
+    description:
+      "Semak jenis RAM, kelajuan, kapasiti, slot motherboard dan dual-channel sebelum menaik taraf komputer desktop.",
+    category: "Gadget",
+    readingMinutes: 7,
+    updated: "2026-08-13",
+    intro:
+      "Upgrade RAM boleh membantu multitasking dan permainan, tetapi modul yang salah mungkin tidak boleh dipasang atau beroperasi pada kelajuan lebih rendah daripada jangkaan.",
+    sections: [
+      {
+        id: "jenis",
+        heading: "1. Pastikan jenis dan bentuk RAM betul",
+        body: [
+          "DDR4 dan DDR5 mempunyai kedudukan takuk yang berbeza dan tidak boleh saling menggantikan. Desktop biasanya menggunakan DIMM, manakala laptop menggunakan SO-DIMM yang lebih pendek.",
+          "Rujuk manual motherboard atau aplikasi maklumat sistem sebelum membeli.",
+        ],
+      },
+      {
+        id: "kapasiti",
+        heading: "2. Tentukan kapasiti yang diperlukan",
+        body: [
+          "Untuk penggunaan ringan, 16GB biasanya memberi ruang multitasking yang selesa. Kerja kreatif, mesin maya dan projek besar mungkin mendapat manfaat daripada kapasiti lebih tinggi.",
+          "Semak kapasiti maksimum motherboard dan sistem operasi terlebih dahulu.",
+        ],
+      },
+      {
+        id: "dual-channel",
+        heading: "3. Fahami dual-channel dan padanan modul",
+        body: [
+          "Sepasang modul dengan kapasiti dan spesifikasi sama biasanya memberi konfigurasi yang lebih mudah dan konsisten. Campuran modul boleh berfungsi, tetapi sistem lazimnya mengikut tetapan paling perlahan yang serasi.",
+        ],
+      },
+      {
+        id: "kelajuan",
+        heading: "4. Kelajuan tertera tidak semestinya automatik",
+        body: [
+          "Kelajuan sebenar bergantung pada CPU, motherboard, BIOS dan profil memori. Profil prestasi mungkin perlu diaktifkan secara manual dalam BIOS.",
+          "Jika tidak pasti, utamakan keserasian dan kestabilan berbanding nombor kelajuan tertinggi.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Bolehkah RAM berlainan jenama dicampurkan?",
+        answer:
+          "Kadangkala boleh, tetapi padanan kit yang sama mengurangkan risiko isu keserasian dan tetapan kelajuan.",
+      },
+    ],
+    relatedProductIds: ["kingston-fury-beast-ddr4"],
+  },
+  {
+    slug: "cara-pilih-seluar-riding-motosikal",
+    title: "Cara Pilih Seluar Riding Motosikal Yang Sesuai",
+    description:
+      "Panduan menilai perlindungan, keselesaan, saiz, pengudaraan dan kegunaan seluar riding motosikal.",
+    category: "Automotive",
+    readingMinutes: 6,
+    updated: "2026-08-13",
+    intro:
+      "Seluar riding perlu seimbang antara perlindungan dan keselesaan. Jika terlalu panas atau tidak sesuai saiz, pengguna cenderung meninggalkannya di rumah.",
+    sections: [
+      {
+        id: "kegunaan",
+        heading: "1. Tentukan jenis perjalanan",
+        body: [
+          "Untuk perjalanan bandar, bahan ringan dan pengudaraan membantu keselesaan. Perjalanan jauh memerlukan ketahanan, ruang pergerakan dan perlindungan cuaca yang lebih baik.",
+        ],
+      },
+      {
+        id: "perlindungan",
+        heading: "2. Semak kawasan perlindungan",
+        body: [
+          "Bahagian lutut, pinggul dan kawasan mudah bergesel memerlukan perhatian. Pastikan pelindung lutut berada pada kedudukan betul ketika duduk di atas motosikal, bukan hanya ketika berdiri.",
+        ],
+        bullets: [
+          "Jahitan kukuh pada kawasan tekanan",
+          "Pelindung yang boleh dilaras atau ditanggalkan",
+          "Bahan tahan lelas yang dinyatakan dengan jelas",
+        ],
+      },
+      {
+        id: "saiz",
+        heading: "3. Gunakan carta ukuran seller",
+        body: [
+          "Jangan bergantung pada label S, M atau L semata-mata. Ukur pinggang, pinggul dan panjang kaki, kemudian bandingkan dengan carta produk tertentu.",
+          "Berikan sedikit ruang untuk posisi menunggang dan lapisan pakaian, tetapi elakkan seluar terlalu longgar sehingga pelindung mudah beralih.",
+        ],
+      },
+      {
+        id: "cuaca",
+        heading: "4. Bezakan kalis air dan tahan percikan",
+        body: [
+          "Bahan tahan percikan sesuai untuk hujan ringan, tetapi tidak semestinya bertahan dalam hujan lebat. Untuk perjalanan harian, pertimbangkan lapisan hujan berasingan yang mudah disimpan.",
+        ],
+      },
+    ],
+    relatedProductIds: ["eaglade-riding-pants"],
+  },
+  {
+    slug: "cara-pilih-jaket-riding-kalis-air",
+    title: "Cara Pilih Jaket Riding Kalis Air Untuk Cuaca Malaysia",
+    description:
+      "Perkara penting sebelum membeli jaket riding: perlindungan hujan, pengudaraan, saiz dan keselamatan.",
+    category: "Automotive",
+    readingMinutes: 6,
+    updated: "2026-08-13",
+    intro:
+      "Cuaca panas dan hujan mengejut menjadikan pemilihan jaket riding di Malaysia agak mencabar. Jaket yang benar-benar praktikal perlu selesa dipakai dengan kerap.",
+    sections: [
+      {
+        id: "label",
+        heading: "1. Fahami tuntutan kalis air",
+        body: [
+          "Istilah waterproof, water-resistant dan windbreaker tidak membawa maksud yang sama. Semak bahan, lapisan dalaman, penutup zip dan ulasan penggunaan ketika hujan.",
+        ],
+      },
+      {
+        id: "ventilasi",
+        heading: "2. Utamakan pengudaraan",
+        body: [
+          "Jaket yang memerangkap haba cepat menjadi tidak selesa. Cari bukaan udara, lapisan yang boleh ditanggalkan atau fabrik yang sesuai dengan perjalanan harian.",
+        ],
+      },
+      {
+        id: "fit",
+        heading: "3. Uji saiz dalam posisi menunggang",
+        body: [
+          "Lengan perlu kekal menutup pergelangan ketika tangan memegang handlebar. Bahagian belakang pula perlu cukup panjang untuk melindungi pinggang ketika badan membongkok.",
+        ],
+      },
+      {
+        id: "keselamatan",
+        heading: "4. Jangan samakan jaket fesyen dengan jaket perlindungan",
+        body: [
+          "Jaket bercorak motosikal tidak semestinya mempunyai perlindungan hentakan atau tahan lelas. Baca spesifikasi dengan teliti dan pilih berdasarkan risiko perjalanan anda.",
+        ],
+      },
+    ],
+    relatedProductIds: ["ktm-v2-waterproof-jacket"],
+  },
+  {
+    slug: "panduan-pilih-kerusi-camping",
+    title: "Panduan Pilih Kerusi Camping Yang Selesa dan Praktikal",
+    description:
+      "Cara menilai kapasiti beban, saiz lipatan, bahan, kestabilan dan keselesaan kerusi camping.",
+    category: "Lifestyle",
+    readingMinutes: 6,
+    updated: "2026-08-13",
+    intro:
+      "Kerusi camping yang nampak selesa dalam gambar mungkin terlalu berat, rendah atau sukar disimpan. Pilihan terbaik bergantung pada cara anda bergerak dan lokasi penggunaan.",
+    sections: [
+      {
+        id: "aktiviti",
+        heading: "1. Padankan dengan jenis aktiviti",
+        body: [
+          "Untuk perkhemahan menggunakan kereta, keselesaan boleh diutamakan kerana berat kurang kritikal. Untuk berjalan jauh, saiz lipatan dan berat menjadi faktor utama.",
+        ],
+      },
+      {
+        id: "kapasiti",
+        heading: "2. Semak kapasiti dan binaan rangka",
+        body: [
+          "Pilih kapasiti beban dengan margin yang munasabah. Perhatikan sambungan rangka, jahitan tempat duduk dan bentuk kaki kerana semuanya mempengaruhi kestabilan.",
+        ],
+      },
+      {
+        id: "saiz",
+        heading: "3. Ukur ruang simpanan",
+        body: [
+          "Semak ukuran ketika digunakan dan ketika dilipat. Kerusi lebar mungkin selesa tetapi mengambil ruang besar dalam bonet atau stor rumah.",
+        ],
+      },
+      {
+        id: "tanah",
+        heading: "4. Pertimbangkan permukaan penggunaan",
+        body: [
+          "Kaki yang sempit mudah tenggelam pada pasir atau tanah lembut. Bentuk kaki lebih lebar atau alas tambahan membantu mengagihkan beban.",
+        ],
+      },
+    ],
+    relatedProductIds: ["magic-pocket-kermit-camping-chair"],
+  },
+  {
+    slug: "cara-pilih-pewangi-kereta",
+    title: "Cara Pilih Pewangi Kereta Tanpa Membazir",
+    description:
+      "Panduan memilih jenis, kekuatan bau, lokasi penggunaan dan nilai sebenar pewangi kereta.",
+    category: "Automotive",
+    readingMinutes: 5,
+    updated: "2026-08-13",
+    intro:
+      "Pewangi kereta sangat bergantung pada saiz kabin, suhu dan citarasa pengguna. Produk yang kuat tidak semestinya lebih selesa atau lebih tahan lama.",
+    sections: [
+      {
+        id: "jenis",
+        heading: "1. Pilih bentuk yang mudah dikawal",
+        body: [
+          "Jenis cecair, gel, kad gantung dan klip penghawa dingin melepaskan bau dengan cara berbeza. Pilih produk yang membolehkan tahap bau dilaras jika anda sensitif terhadap wangian.",
+        ],
+      },
+      {
+        id: "lokasi",
+        heading: "2. Letakkan di lokasi yang selamat",
+        body: [
+          "Elakkan lokasi yang mengganggu pandangan, kawalan kenderaan atau beg udara. Cecair juga perlu dipastikan tidak mudah tumpah pada dashboard dan kemasan dalaman.",
+        ],
+      },
+      {
+        id: "nilai",
+        heading: "3. Banding kos mengikut tempoh penggunaan",
+        body: [
+          "Nilai produk tidak hanya bergantung pada isipadu. Bandingkan harga, anggaran tempoh penggunaan dan sama ada isi semula boleh dibeli berasingan.",
+        ],
+      },
+      {
+        id: "punca-bau",
+        heading: "4. Selesaikan punca bau terlebih dahulu",
+        body: [
+          "Pewangi hanya menutup bau. Bersihkan sisa makanan, karpet lembap dan sistem penghawa dingin jika bau tidak menyenangkan berterusan.",
+        ],
+      },
+    ],
+    relatedProductIds: ["blank-car-perfume"],
+  },
+  {
+    slug: "cara-banding-harga-produk-online",
+    title: "Cara Banding Harga Produk Online Dengan Betul",
+    description:
+      "Kaedah membandingkan harga akhir, variasi, seller, waranti dan kos penghantaran sebelum membeli online.",
+    category: "Tips",
+    readingMinutes: 6,
+    updated: "2026-08-13",
+    intro:
+      "Dua listing yang kelihatan sama boleh mempunyai variasi, waranti dan kos akhir yang berbeza. Perbandingan perlu dibuat pada pakej yang benar-benar setara.",
+    sections: [
+      {
+        id: "variasi",
+        heading: "1. Pilih variasi yang sama",
+        body: [
+          "Harga terendah pada kad produk mungkin merujuk kepada aksesori atau variasi paling asas. Buka listing dan pilih warna, saiz, kapasiti atau pakej yang anda mahu sebelum membandingkan.",
+        ],
+      },
+      {
+        id: "harga-akhir",
+        heading: "2. Catat harga akhir di checkout",
+        body: [
+          "Masukkan diskaun, voucher, penghantaran, perlindungan tambahan dan caj lain. Harga selepas semua komponen inilah angka yang patut dibandingkan.",
+        ],
+      },
+      {
+        id: "seller",
+        heading: "3. Nilai seller dan waranti",
+        body: [
+          "Perbezaan kecil mungkin berbaloi untuk seller yang mempunyai rekod baik, waranti jelas dan proses pemulangan mudah. Semak ulasan terkini yang berkaitan dengan variasi pilihan anda.",
+        ],
+      },
+      {
+        id: "rekod",
+        heading: "4. Elakkan keputusan kerana kiraan masa semata-mata",
+        body: [
+          "Promosi berulang boleh membuatkan pengguna membeli tanpa perbandingan. Simpan dua atau tiga calon, catat harga akhir dan pilih berdasarkan nilai keseluruhan.",
+        ],
+      },
+    ],
+    relatedTools: [
+      {
+        label: "Discount Calculator",
+        to: "/tools/discount-calculator",
+        description: "Bandingkan harga akhir selepas voucher dan penghantaran.",
+      },
+    ],
+  },
+  {
+    slug: "cara-kenal-pasti-diskaun-palsu",
+    title: "Cara Kenal Pasti Diskaun Yang Tidak Benar-benar Berbaloi",
+    description:
+      "Semak harga asal, variasi, voucher dan kos tambahan supaya peratus diskaun tidak mengelirukan keputusan.",
+    category: "Tips",
+    readingMinutes: 5,
+    updated: "2026-08-13",
+    intro:
+      "Peratus diskaun yang besar mudah menarik perhatian, tetapi ia tidak semestinya menghasilkan harga akhir paling rendah.",
+    sections: [
+      {
+        id: "harga-asal",
+        heading: "1. Jangan bergantung pada harga yang dicoret",
+        body: [
+          "Bandingkan harga jual semasa dengan listing lain untuk produk dan variasi yang sama. Harga rujukan yang tinggi boleh membuatkan diskaun kelihatan lebih besar.",
+        ],
+      },
+      {
+        id: "syarat",
+        heading: "2. Baca syarat voucher",
+        body: [
+          "Voucher mungkin mempunyai minimum belian, had maksimum diskaun, kaedah pembayaran tertentu atau hanya sah untuk pengguna terpilih.",
+        ],
+      },
+      {
+        id: "kos",
+        heading: "3. Tambahkan kos yang muncul kemudian",
+        body: [
+          "Penghantaran, pemasangan, aksesori wajib dan jaminan tambahan boleh menghapuskan penjimatan yang kelihatan pada awalnya.",
+        ],
+      },
+      {
+        id: "keperluan",
+        heading: "4. Diskaun bukan penjimatan jika barang tidak diperlukan",
+        body: [
+          "Soalan paling penting ialah sama ada produk itu memang diperlukan dan sesuai dengan bajet. Membeli kerana takut promosi tamat tetap menambah perbelanjaan.",
+        ],
+      },
+    ],
+    relatedTools: [
+      {
+        label: "Discount Calculator",
+        to: "/tools/discount-calculator",
+        description: "Kira kadar diskaun efektif berdasarkan harga akhir.",
+      },
+    ],
+  },
+  {
+    slug: "checklist-sebelum-beli-aksesori-kereta",
+    title: "Checklist Sebelum Beli Aksesori Kereta Secara Online",
+    description:
+      "Semak keserasian model, ukuran, pemasangan, keselamatan dan polisi pemulangan aksesori kereta.",
+    category: "Automotive",
+    readingMinutes: 6,
+    updated: "2026-08-13",
+    intro:
+      "Aksesori kereta sering disenaraikan untuk banyak model sekali gus. Kesilapan kecil pada tahun, varian atau ukuran boleh menyebabkan produk tidak boleh dipasang.",
+    sections: [
+      {
+        id: "model",
+        heading: "1. Sahkan model, tahun dan varian",
+        body: [
+          "Nama model sahaja tidak mencukupi kerana reka bentuk boleh berubah mengikut generasi dan facelift. Berikan maklumat tepat kepada seller sebelum membuat pesanan.",
+        ],
+      },
+      {
+        id: "pemasangan",
+        heading: "2. Fahami kaedah pemasangan",
+        body: [
+          "Semak sama ada produk plug-and-play, memerlukan penggerudian, pendawaian atau pemasangan profesional. Masukkan kos upah dalam bajet keseluruhan.",
+        ],
+      },
+      {
+        id: "keselamatan",
+        heading: "3. Utamakan keselamatan dan fungsi asal",
+        body: [
+          "Aksesori tidak sepatutnya menghalang pandangan, kawalan, sensor atau sistem keselamatan. Untuk komponen stereng, brek, elektrik dan beg udara, dapatkan nasihat pemasang yang berkelayakan.",
+        ],
+      },
+      {
+        id: "pemulangan",
+        heading: "4. Semak polisi pemulangan sebelum membuka bungkusan",
+        body: [
+          "Simpan video unboxing dan jangan ubah suai produk sebelum keserasian disahkan. Sesetengah seller tidak menerima pemulangan selepas pemasangan.",
+        ],
+      },
+    ],
+    relatedProductIds: ["perodua-gr-steering"],
+  },
+  {
+    slug: "cara-elak-tersalah-beli-variasi-shopee",
+    title: "Cara Elak Tersalah Beli Variasi Produk di Shopee",
+    description:
+      "Langkah menyemak variasi, gambar, harga, kuantiti dan catatan pesanan sebelum membuat bayaran.",
+    category: "Tips",
+    readingMinutes: 5,
+    updated: "2026-08-13",
+    intro:
+      "Harga yang dipaparkan dalam hasil carian selalunya ialah harga terendah antara semua variasi. Oleh itu, pilihan sebenar perlu disahkan pada halaman produk dan checkout.",
+    sections: [
+      {
+        id: "nama",
+        heading: "1. Baca nama penuh setiap variasi",
+        body: [
+          "Jangan pilih berdasarkan gambar kecil sahaja. Variasi termurah mungkin aksesori, saiz kecil, deposit atau produk berbeza daripada gambar utama.",
+        ],
+      },
+      {
+        id: "harga",
+        heading: "2. Perhatikan perubahan harga",
+        body: [
+          "Selepas memilih variasi, pastikan harga, stok dan tempoh penghantaran masih sesuai. Voucher juga mungkin hanya terpakai kepada pilihan tertentu.",
+        ],
+      },
+      {
+        id: "ulasan",
+        heading: "3. Tapis ulasan mengikut variasi jika tersedia",
+        body: [
+          "Ulasan keseluruhan boleh menggabungkan beberapa produk. Cari gambar dan komen daripada pembeli yang memilih variasi sama dengan anda.",
+        ],
+      },
+      {
+        id: "checkout",
+        heading: "4. Semak sekali lagi sebelum bayar",
+        body: [
+          "Periksa nama variasi, kuantiti, alamat, voucher dan harga akhir pada skrin checkout. Ambil tangkap layar jika pesanan mempunyai arahan khas.",
+        ],
+      },
+    ],
+    relatedTools: [
+      {
+        label: "Discount Calculator",
+        to: "/tools/discount-calculator",
+        description: "Semak harga akhir variasi selepas semua diskaun.",
+      },
+    ],
+  },
 ];
 
 export const getGuide = (slug: string) => guides.find((g) => g.slug === slug);
