@@ -174,7 +174,7 @@ function AdminProductsPage() {
     const condition = normalizedName.match(/^\(([^)]+)\)\s*/)?.[1] ?? "";
     const name = normalizedName
       .replace(/^\([^)]+\)\s*/, "")
-      .split(/\s+(?:100%|no hidden|free gift|ready stock)\b/i)[0]
+      .split(/\s+(?=100%|no hidden\b|free gift\b|ready stock\b)/i)[0]
       .replace(/[!.,\s]+$/, "")
       .slice(0, 180);
     const price = prices[0] ?? 0;
