@@ -127,10 +127,25 @@ function AdminProductsPage() {
     const prices = [...text.matchAll(/RM\s*([0-9][0-9.,]*)/gi)]
       .map((match) => Number(match[1]?.replace(/,/g, "")))
       .filter((price) => Number.isFinite(price) && price > 0);
+    const voucherPriceLine = lines.find(
+      (line) => /after\s+voucher/i.test(line) && /RM\s*[0-9]/i.test(line),
+    );
+    const voucherPriceMatch = voucherPriceLine?.match(/RM\s*([0-9][0-9.,]*)/i);
+    const voucherPrice = voucherPriceMatch
+      ? Number(voucherPriceMatch[1].replace(/,/g, ""))
+      : 0;
     const ignored =
-      /shopee|shipping|voucher|sold|rating|cashback|coins|add to cart|buy now|free returns?|cash on delivery|mobile protec|select variation|review summary|chat now|paylater|months?|arrives? late/i;
-    const priceLineIndex = lines.findIndex((line) => /RM\s*[0-9]/i.test(line));
-    const titleStart = priceLineIndex >= 0 ? priceLineIndex + 1 : 0;
+      /shopee|shipping|voucher|sold|rating|cashback|coins|add to cart|buy now|free returns?|cash on delivery|mobile protec|select variation|review summary|chat now|paylater|months?|arrives? late|lower prices?|remind me|get by/i;
+    const priceLineIndex = lines.findIndex(
+      (line) => /after\s+voucher/i.test(line) && /RM\s*[0-9]/i.test(line),
+    );
+    const fallbackPriceLineIndex = lines.findIndex((line) => /RM\s*[0-9]/i.test(line));
+    const titleStart =
+      priceLineIndex >= 0
+        ? priceLineIndex + 1
+        : fallbackPriceLineIndex >= 0
+          ? fallbackPriceLineIndex + 1
+          : 0;
     const titleLines: string[] = [];
 
     // On Shopee mobile, the title appears shortly after the price. It can span
@@ -166,6 +181,7 @@ function AdminProductsPage() {
       "";
     const normalizedName = rawName
       .replace(/^[^a-z0-9(]+/i, "")
+      .replace(/^preferred\s+/i, "")
       .replace(/[^\p{L}\p{N}\s()/%&+.,-]/gu, " ")
       .replace(/\b1+00%/g, "100%")
       .replace(/\)\s*/g, ") ")
@@ -180,7 +196,9 @@ function AdminProductsPage() {
       )
       .replace(/[!.,\s]+$/, "")
       .slice(0, 180);
-    const price = prices[0] ?? 0;
+    const price = Number.isFinite(voucherPrice) && voucherPrice > 0
+      ? voucherPrice
+      : prices[0] ?? 0;
     return {
       name,
       condition,
