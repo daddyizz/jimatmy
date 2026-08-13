@@ -27,6 +27,7 @@ import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
 import { Route as ToolsDiscountCalculatorRouteImport } from './routes/tools.discount-calculator'
 import { Route as ToolsSellerProfitCalculatorRouteImport } from './routes/tools.seller-profit-calculator'
+import { Route as ApiAdminImportShopeeRouteImport } from './routes/api/admin/import-shopee'
 import { Route as ApiPublicSitemapRouteImport } from './routes/api/public/sitemap'
 
 const IndexRoute = IndexRouteImport.update({
@@ -120,6 +121,11 @@ const ToolsSellerProfitCalculatorRoute =
     path: '/tools/seller-profit-calculator',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiAdminImportShopeeRoute = ApiAdminImportShopeeRouteImport.update({
+  id: '/api/admin/import-shopee',
+  path: '/api/admin/import-shopee',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicSitemapRoute = ApiPublicSitemapRouteImport.update({
   id: '/api/public/sitemap',
   path: '/api/public/sitemap',
@@ -145,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/compare/': typeof CompareIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/api/admin/import-shopee': typeof ApiAdminImportShopeeRoute
   '/api/public/sitemap': typeof ApiPublicSitemapRoute
 }
 export interface FileRoutesByTo {
@@ -166,6 +173,7 @@ export interface FileRoutesByTo {
   '/compare': typeof CompareIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/tools': typeof ToolsIndexRoute
+  '/api/admin/import-shopee': typeof ApiAdminImportShopeeRoute
   '/api/public/sitemap': typeof ApiPublicSitemapRoute
 }
 export interface FileRoutesById {
@@ -188,6 +196,7 @@ export interface FileRoutesById {
   '/compare/': typeof CompareIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/api/admin/import-shopee': typeof ApiAdminImportShopeeRoute
   '/api/public/sitemap': typeof ApiPublicSitemapRoute
 }
 export interface FileRouteTypes {
@@ -211,6 +220,7 @@ export interface FileRouteTypes {
     | '/compare/'
     | '/guides/'
     | '/tools/'
+    | '/api/admin/import-shopee'
     | '/api/public/sitemap'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -232,6 +242,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/guides'
     | '/tools'
+    | '/api/admin/import-shopee'
     | '/api/public/sitemap'
   id:
     | '__root__'
@@ -253,6 +264,7 @@ export interface FileRouteTypes {
     | '/compare/'
     | '/guides/'
     | '/tools/'
+    | '/api/admin/import-shopee'
     | '/api/public/sitemap'
   fileRoutesById: FileRoutesById
 }
@@ -275,6 +287,7 @@ export interface RootRouteChildren {
   CompareIndexRoute: typeof CompareIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
+  ApiAdminImportShopeeRoute: typeof ApiAdminImportShopeeRoute
   ApiPublicSitemapRoute: typeof ApiPublicSitemapRoute
 }
 
@@ -406,6 +419,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsSellerProfitCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/import-shopee': {
+      id: '/api/admin/import-shopee'
+      path: '/api/admin/import-shopee'
+      fullPath: '/api/admin/import-shopee'
+      preLoaderRoute: typeof ApiAdminImportShopeeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/sitemap': {
       id: '/api/public/sitemap'
       path: '/api/public/sitemap'
@@ -435,6 +455,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompareIndexRoute: CompareIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   ToolsIndexRoute: ToolsIndexRoute,
+  ApiAdminImportShopeeRoute: ApiAdminImportShopeeRoute,
   ApiPublicSitemapRoute: ApiPublicSitemapRoute,
 }
 export const routeTree = rootRouteImport

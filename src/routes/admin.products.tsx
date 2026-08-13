@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import type { Session } from "@supabase/supabase-js";
-import { Loader2, LogOut, Pencil, Plus, Upload } from "lucide-react";
+import { Download, Loader2, LogOut, Pencil, Plus, Upload } from "lucide-react";
 
 import { categories, type CategorySlug } from "@/data/categories";
 import type { Marketplace } from "@/data/affiliate";
@@ -59,6 +59,7 @@ function AdminProductsPage() {
   const [editing, setEditing] = useState<ProductRow | null>(null);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
+  const [importUrl, setImportUrl] = useState("");
 
   useEffect(() => {
     if (!supabase) return;
@@ -92,6 +93,53 @@ function AdminProductsPage() {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     setMessage(error ? `Login gagal: ${error.message}` : "Login berjaya.");
     setBusy(false);
+  }
+
+  async function importShopee(event: FormEvent) {
+    event.preventDefault();
+    if (!session) return;
+    setBusy(true);
+    setMessage("Sedang membaca pautan Shopee…");
+    try {
+      const response = await fetch("/api/admin/import-shopee", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({ url: importUrl.trim() }),
+      });
+      const result = (await response.json()) as {
+        error?: string;
+        notice?: string;
+        data?: {
+          name: string;
+          shortDescription: string;
+          image: string;
+          price: number;
+          previousPrice: number;
+          affiliateUrl: string;
+        };
+      };
+      if (!response.ok || !result.data) throw new Error(result.error ?? "Import gagal.");
+      setEditing({
+        ...emptyProduct,
+        name: result.data.name,
+        short_description: result.data.shortDescription,
+        image_url: result.data.image,
+        price: result.data.price,
+        previous_price: result.data.previousPrice,
+        affiliate_url: result.data.affiliateUrl,
+      });
+      setMessage(result.notice ?? "Maklumat diimport. Sila semak sebelum simpan.");
+      setImportUrl("");
+    } catch (error) {
+      setMessage(
+        `Import gagal: ${error instanceof Error ? error.message : "Ralat tidak diketahui"}`,
+      );
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function uploadImage(file: File) {
@@ -211,6 +259,35 @@ function AdminProductsPage() {
       </div>
 
       {message && <p className="mt-4 rounded-xl bg-muted p-3 text-sm">{message}</p>}
+
+      <form
+        onSubmit={importShopee}
+        className="mt-6 rounded-2xl border border-border bg-card p-4 shadow-card"
+      >
+        <label htmlFor="shopee-import" className="text-sm font-bold">
+          Import daripada pautan Shopee
+        </label>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Paste pautan biasa atau affiliate. Sistem akan cuba mengisi maklumat produk secara
+          automatik.
+        </p>
+        <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+          <input
+            id="shopee-import"
+            className="admin-input flex-1"
+            type="url"
+            inputMode="url"
+            placeholder="https://s.shopee.com.my/..."
+            required
+            value={importUrl}
+            onChange={(event) => setImportUrl(event.target.value)}
+          />
+          <button className="admin-primary" disabled={busy} type="submit">
+            {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
+            Import Produk
+          </button>
+        </div>
+      </form>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((product) => (
