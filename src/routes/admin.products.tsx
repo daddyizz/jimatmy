@@ -127,8 +127,32 @@ function AdminProductsPage() {
     const prices = [...text.matchAll(/RM\s*([0-9][0-9.,]*)/gi)]
       .map((match) => Number(match[1]?.replace(/,/g, "")))
       .filter((price) => Number.isFinite(price) && price > 0);
-    const ignored = /shopee|shipping|voucher|sold|rating|cashback|coins|add to cart|buy now/i;
-    const candidates = lines.filter(
+    const ignored =
+      /shopee|shipping|voucher|sold|rating|cashback|coins|add to cart|buy now|free returns?|cash on delivery|mobile protec|select variation|review summary|chat now|paylater|months?|arrives? late/i;
+    const priceLineIndex = lines.findIndex((line) => /RM\s*[0-9]/i.test(line));
+    const titleStart = priceLineIndex >= 0 ? priceLineIndex + 1 : 0;
+    const titleLines: string[] = [];
+
+    // On Shopee mobile, the title appears shortly after the price. It can span
+    // several OCR lines, so join those lines and stop at delivery/policy blocks.
+    for (const line of lines.slice(titleStart, titleStart + 12)) {
+      if (/get by|free returns?|cash on delivery|mobile protec|select variation|product ratings?/i.test(line)) {
+        if (titleLines.length) break;
+        continue;
+      }
+      if (
+        line.length < 3 ||
+        ignored.test(line) ||
+        /^RM\s*/i.test(line) ||
+        /^buy\s+RM/i.test(line) ||
+        !/[a-z]/i.test(line)
+      ) {
+        continue;
+      }
+      titleLines.push(line);
+    }
+
+    const fallbackCandidates = lines.filter(
       (line) =>
         line.length >= 12 &&
         line.length <= 180 &&
@@ -136,7 +160,17 @@ function AdminProductsPage() {
         !/^RM\s*/i.test(line) &&
         /[a-z]/i.test(line),
     );
-    const name = candidates.sort((a, b) => b.length - a.length)[0] ?? "";
+    const rawName =
+      titleLines.join(" ") ||
+      fallbackCandidates.sort((a, b) => b.length - a.length)[0] ||
+      "";
+    const name = rawName
+      .replace(/^[^a-z0-9(]+/i, "")
+      .replace(/[^\p{L}\p{N}\s()/%&+.,-]/gu, " ")
+      .replace(/\b1+00%/g, "100%")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 180);
     const price = prices[0] ?? 0;
     return {
       name,
@@ -185,7 +219,9 @@ function AdminProductsPage() {
         ...emptyProduct,
         name: extracted.name || result.data.name,
         short_description:
-          extracted.name || result.data.shortDescription || "Lengkapkan penerangan produk ini.",
+          (extracted.name
+            ? `${extracted.name}. Semak pilihan variasi dan butiran produk di Shopee.`
+            : result.data.shortDescription) || "Lengkapkan penerangan produk ini.",
         image_url: uploadedImage ?? result.data.image,
         price: extracted.price || result.data.price,
         previous_price: extracted.previousPrice || result.data.previousPrice,
