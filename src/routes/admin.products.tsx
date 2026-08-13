@@ -2,6 +2,7 @@ import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import type { Session } from "@supabase/supabase-js";
 import { Download, Loader2, LogOut, Pencil, Plus, Upload } from "lucide-react";
+import { createWorker } from "tesseract.js";
 
 import { categories, type CategorySlug } from "@/data/categories";
 import type { Marketplace } from "@/data/affiliate";
@@ -60,6 +61,7 @@ function AdminProductsPage() {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const [importUrl, setImportUrl] = useState("");
+  const [importScreenshot, setImportScreenshot] = useState<File | null>(null);
 
   useEffect(() => {
     if (!supabase) return;
@@ -95,12 +97,69 @@ function AdminProductsPage() {
     setBusy(false);
   }
 
+  async function cropProductImage(file: File) {
+    const bitmap = await createImageBitmap(file);
+    const sourceSize = Math.min(bitmap.width, bitmap.height);
+    const sourceY = Math.min(
+      Math.round(bitmap.height * 0.12),
+      Math.max(bitmap.height - sourceSize, 0),
+    );
+    const outputSize = Math.min(900, sourceSize);
+    const canvas = document.createElement("canvas");
+    canvas.width = outputSize;
+    canvas.height = outputSize;
+    const context = canvas.getContext("2d");
+    if (!context) throw new Error("Pelayar tidak dapat memproses gambar.");
+    context.drawImage(bitmap, 0, sourceY, sourceSize, sourceSize, 0, 0, outputSize, outputSize);
+    bitmap.close();
+    const blob = await new Promise<Blob | null>((resolve) =>
+      canvas.toBlob(resolve, "image/webp", 0.82),
+    );
+    if (!blob) throw new Error("Gagal menyediakan gambar produk.");
+    return new File([blob], `shopee-${Date.now()}.webp`, { type: "image/webp" });
+  }
+
+  function extractProduct(text: string) {
+    const lines = text
+      .split(/\r?\n/)
+      .map((line) => line.replace(/\s+/g, " ").trim())
+      .filter(Boolean);
+    const prices = [...text.matchAll(/RM\s*([0-9][0-9.,]*)/gi)]
+      .map((match) => Number(match[1]?.replace(/,/g, "")))
+      .filter((price) => Number.isFinite(price) && price > 0);
+    const ignored = /shopee|shipping|voucher|sold|rating|cashback|coins|add to cart|buy now/i;
+    const candidates = lines.filter(
+      (line) =>
+        line.length >= 12 &&
+        line.length <= 180 &&
+        !ignored.test(line) &&
+        !/^RM\s*/i.test(line) &&
+        /[a-z]/i.test(line),
+    );
+    const name = candidates.sort((a, b) => b.length - a.length)[0] ?? "";
+    const price = prices[0] ?? 0;
+    return {
+      name,
+      price,
+      previousPrice: prices.find((value) => value > price) ?? price,
+    };
+  }
+
   async function importShopee(event: FormEvent) {
     event.preventDefault();
     if (!session) return;
+    if (!importScreenshot) {
+      setMessage("Sila pilih screenshot halaman produk Shopee.");
+      return;
+    }
     setBusy(true);
-    setMessage("Sedang membaca pautan Shopee…");
+    setMessage("Sedang membaca screenshot… Proses ini mungkin mengambil sedikit masa.");
     try {
+      const worker = await createWorker("eng");
+      const recognition = await worker.recognize(importScreenshot);
+      await worker.terminate();
+      const extracted = extractProduct(recognition.data.text);
+      const uploadedImage = await uploadImage(await cropProductImage(importScreenshot));
       const response = await fetch("/api/admin/import-shopee", {
         method: "POST",
         headers: {
@@ -124,15 +183,21 @@ function AdminProductsPage() {
       if (!response.ok || !result.data) throw new Error(result.error ?? "Import gagal.");
       setEditing({
         ...emptyProduct,
-        name: result.data.name,
-        short_description: result.data.shortDescription,
-        image_url: result.data.image,
-        price: result.data.price,
-        previous_price: result.data.previousPrice,
+        name: extracted.name || result.data.name,
+        short_description:
+          extracted.name || result.data.shortDescription || "Lengkapkan penerangan produk ini.",
+        image_url: uploadedImage ?? result.data.image,
+        price: extracted.price || result.data.price,
+        previous_price: extracted.previousPrice || result.data.previousPrice,
         affiliate_url: result.data.affiliateUrl,
       });
-      setMessage(result.notice ?? "Maklumat diimport. Sila semak sebelum simpan.");
+      setMessage(
+        extracted.name && extracted.price
+          ? "Screenshot berjaya dibaca. Semak semua maklumat dan potongan gambar sebelum simpan."
+          : "Sebahagian maklumat tidak dapat dibaca. Lengkapkan ruangan kosong sebelum simpan.",
+      );
       setImportUrl("");
+      setImportScreenshot(null);
     } catch (error) {
       setMessage(
         `Import gagal: ${error instanceof Error ? error.message : "Ralat tidak diketahui"}`,
@@ -268,8 +333,7 @@ function AdminProductsPage() {
           Import daripada pautan Shopee
         </label>
         <p className="mt-1 text-xs text-muted-foreground">
-          Paste pautan biasa atau affiliate. Sistem akan cuba mengisi maklumat produk secara
-          automatik.
+          Paste pautan dan pilih satu screenshot yang menunjukkan gambar, nama serta harga produk.
         </p>
         <div className="mt-3 flex flex-col gap-2 sm:flex-row">
           <input
@@ -282,11 +346,24 @@ function AdminProductsPage() {
             value={importUrl}
             onChange={(event) => setImportUrl(event.target.value)}
           />
+          <label className="admin-secondary cursor-pointer">
+            <Upload className="h-4 w-4" /> Screenshot
+            <input
+              className="sr-only"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              required
+              onChange={(event) => setImportScreenshot(event.target.files?.[0] ?? null)}
+            />
+          </label>
           <button className="admin-primary" disabled={busy} type="submit">
             {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
             Import Produk
           </button>
         </div>
+        {importScreenshot && (
+          <p className="mt-2 text-xs text-muted-foreground">Dipilih: {importScreenshot.name}</p>
+        )}
       </form>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
