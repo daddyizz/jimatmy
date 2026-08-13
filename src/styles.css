@@ -2,6 +2,18 @@
 @source "../src";
 @import "tw-animate-css";
 
+@layer components {
+  .admin-input {
+    @apply min-h-11 w-full rounded-xl border border-input bg-background px-3 py-2 text-sm outline-none focus:border-primary;
+  }
+  .admin-primary {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground disabled:opacity-50;
+  }
+  .admin-secondary {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-border bg-background px-3 text-sm font-semibold disabled:opacity-50;
+  }
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /*

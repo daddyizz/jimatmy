@@ -4,7 +4,7 @@ import { Calculator, TrendingUp, ArrowRight, Percent, Scale, BookOpen } from "lu
 import { SearchBar } from "@/components/search/SearchBar";
 import { ProductGrid } from "@/components/products/ProductCard";
 import { AdSlot } from "@/components/layout/AdSlot";
-import { featuredProducts } from "@/data/products";
+import { useProducts } from "@/hooks/useProducts";
 import { categories } from "@/data/categories";
 import { guides } from "@/data/guides";
 import { comparisons } from "@/data/comparisons";
@@ -58,7 +58,8 @@ const tools = [
 ];
 
 function HomePage() {
-  const featured = featuredProducts();
+  const { data: allProducts } = useProducts();
+  const featured = allProducts.filter((product) => product.featured);
 
   return (
     <>

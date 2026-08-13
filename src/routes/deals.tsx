@@ -4,7 +4,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { ProductGrid } from "@/components/products/ProductCard";
 import { AdSlot } from "@/components/layout/AdSlot";
-import { products, discountPercent } from "@/data/products";
+import { discountPercent } from "@/data/products";
+import { useProducts } from "@/hooks/useProducts";
 import { categories, type CategorySlug } from "@/data/categories";
 import { marketplaceLabel, type Marketplace } from "@/data/affiliate";
 
@@ -49,11 +50,11 @@ const priceRanges = [
   { value: "200-plus", label: "RM200 ke atas", min: 200, max: Infinity },
 ] as const;
 
-const marketplaces: Marketplace[] = Array.from(
-  new Set(products.map((product) => product.marketplace)),
-);
-
 function DealsPage() {
+  const { data: liveProducts } = useProducts();
+  const marketplaces: Marketplace[] = Array.from(
+    new Set(liveProducts.map((product) => product.marketplace)),
+  );
   const { category: initialCategory } = Route.useSearch();
   const [category, setCategory] = useState<CategorySlug | "all">(initialCategory ?? "all");
   const [marketplace, setMarketplace] = useState<Marketplace | "all">("all");
@@ -67,7 +68,7 @@ function DealsPage() {
 
   const filtered = useMemo(() => {
     const range = priceRanges.find((r) => r.value === priceRange)!;
-    const list = products.filter(
+    const list = liveProducts.filter(
       (p) =>
         (category === "all" || p.category === category) &&
         (marketplace === "all" || p.marketplace === marketplace) &&
@@ -82,7 +83,7 @@ function DealsPage() {
     else if (sort === "discount") sorted.sort((a, b) => discountPercent(b) - discountPercent(a));
     else sorted.sort((a, b) => b.popularity - a.popularity);
     return sorted;
-  }, [category, marketplace, priceRange, minDiscount, sort]);
+  }, [category, marketplace, priceRange, minDiscount, sort, liveProducts]);
 
   const selectClass =
     "min-h-11 w-full rounded-xl border border-input bg-card px-3 text-sm outline-none";

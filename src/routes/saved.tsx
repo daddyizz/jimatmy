@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { ProductGrid } from "@/components/products/ProductCard";
 import { useSavedDeals } from "@/hooks/useSavedDeals";
-import { products } from "@/data/products";
+import { useProducts } from "@/hooks/useProducts";
 
 const title = "Saved Deals — Simpanan Anda | JimatMY";
 const description = "Deal yang anda simpan di peranti ini. Tiada log masuk diperlukan.";
@@ -24,6 +24,7 @@ export const Route = createFileRoute("/saved")({
 
 function SavedPage() {
   const { savedIds, hydrated } = useSavedDeals();
+  const { data: products } = useProducts();
   const saved = products.filter((p) => savedIds.includes(p.id));
 
   return (

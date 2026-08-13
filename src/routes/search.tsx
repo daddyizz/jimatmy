@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { SearchBar } from "@/components/search/SearchBar";
 import { searchAll } from "@/lib/search";
+import { useProducts } from "@/hooks/useProducts";
 
 type SearchParams = { q?: string };
 
@@ -30,7 +31,8 @@ export const Route = createFileRoute("/search")({
 function SearchPage() {
   const { q } = Route.useSearch();
   const query = q ?? "";
-  const results = searchAll(query);
+  const { data: products } = useProducts();
+  const results = searchAll(query, products);
 
   return (
     <>

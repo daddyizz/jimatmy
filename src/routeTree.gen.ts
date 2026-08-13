@@ -19,6 +19,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as AdminProductsRouteImport } from './routes/admin.products'
 import { Route as CompareIndexRouteImport } from './routes/compare.index'
 import { Route as CompareSlugRouteImport } from './routes/compare.$slug'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
@@ -78,6 +79,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminProductsRoute = AdminProductsRouteImport.update({
+  id: '/admin/products',
+  path: '/admin/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompareIndexRoute = CompareIndexRouteImport.update({
   id: '/compare/',
   path: '/compare/',
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
   '/terms': typeof TermsRoute
+  '/admin/products': typeof AdminProductsRoute
   '/compare/$slug': typeof CompareSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
   '/terms': typeof TermsRoute
+  '/admin/products': typeof AdminProductsRoute
   '/compare/$slug': typeof CompareSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
@@ -172,6 +180,7 @@ export interface FileRoutesById {
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
   '/terms': typeof TermsRoute
+  '/admin/products': typeof AdminProductsRoute
   '/compare/$slug': typeof CompareSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/tools/discount-calculator': typeof ToolsDiscountCalculatorRoute
@@ -194,6 +203,7 @@ export interface FileRouteTypes {
     | '/saved'
     | '/search'
     | '/terms'
+    | '/admin/products'
     | '/compare/$slug'
     | '/guides/$slug'
     | '/tools/discount-calculator'
@@ -214,6 +224,7 @@ export interface FileRouteTypes {
     | '/saved'
     | '/search'
     | '/terms'
+    | '/admin/products'
     | '/compare/$slug'
     | '/guides/$slug'
     | '/tools/discount-calculator'
@@ -234,6 +245,7 @@ export interface FileRouteTypes {
     | '/saved'
     | '/search'
     | '/terms'
+    | '/admin/products'
     | '/compare/$slug'
     | '/guides/$slug'
     | '/tools/discount-calculator'
@@ -255,6 +267,7 @@ export interface RootRouteChildren {
   SavedRoute: typeof SavedRoute
   SearchRoute: typeof SearchRoute
   TermsRoute: typeof TermsRoute
+  AdminProductsRoute: typeof AdminProductsRoute
   CompareSlugRoute: typeof CompareSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   ToolsDiscountCalculatorRoute: typeof ToolsDiscountCalculatorRoute
@@ -337,6 +350,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/products': {
+      id: '/admin/products'
+      path: '/admin/products'
+      fullPath: '/admin/products'
+      preLoaderRoute: typeof AdminProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/compare/': {
       id: '/compare/'
       path: '/compare'
@@ -407,6 +427,7 @@ const rootRouteChildren: RootRouteChildren = {
   SavedRoute: SavedRoute,
   SearchRoute: SearchRoute,
   TermsRoute: TermsRoute,
+  AdminProductsRoute: AdminProductsRoute,
   CompareSlugRoute: CompareSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   ToolsDiscountCalculatorRoute: ToolsDiscountCalculatorRoute,

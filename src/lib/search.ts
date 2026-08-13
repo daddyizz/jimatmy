@@ -1,4 +1,4 @@
-import { products } from "@/data/products";
+import { products as fallbackProducts, type Product } from "@/data/products";
 import { guides } from "@/data/guides";
 import { comparisons } from "@/data/comparisons";
 import { categoryLabel } from "@/data/categories";
@@ -31,7 +31,7 @@ const tools: SearchResult[] = [
   },
 ];
 
-const index = (): SearchResult[] => [
+const index = (products: Product[]): SearchResult[] => [
   ...tools,
   ...products.map<SearchResult>((p) => ({
     id: `product-${p.id}`,
@@ -59,11 +59,11 @@ const index = (): SearchResult[] => [
   })),
 ];
 
-export function searchAll(query: string): SearchResult[] {
+export function searchAll(query: string, products: Product[] = fallbackProducts): SearchResult[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
   const terms = q.split(/\s+/);
-  return index()
+  return index(products)
     .map((item) => {
       const haystack = `${item.title} ${item.description} ${item.meta ?? ""}`.toLowerCase();
       const score = terms.reduce((acc, term) => (haystack.includes(term) ? acc + 1 : acc), 0);
