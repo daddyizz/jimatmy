@@ -159,7 +159,7 @@ function AdminProductsPage() {
     const voucherPriceMatch = voucherPriceLine?.match(/RM\s*([0-9][0-9.,]*)/i);
     const voucherPrice = voucherPriceMatch ? Number(voucherPriceMatch[1].replace(/,/g, "")) : 0;
     const ignored =
-      /shopee|shipping|voucher|sold|rating|cashback|coins|add to cart|buy now|free returns?|cash on delivery|mobile protec|select variation|review summary|chat now|paylater|months?|arrives? late|lower prices?|remind me|get by/i;
+      /shopee|shipping|voucher|sold|rating|cashback|coins|add to cart|buy now|free returns?|cash on delivery|mobile protec|select variation|review summary|chat now|paylater|months?|arrives? late|lower prices?|remind me|get by|seller'?s own fleet delivery/i;
     const priceLineIndex = lines.findIndex(
       (line) => /after\s+voucher/i.test(line) && /RM\s*[0-9]/i.test(line),
     );
@@ -176,7 +176,7 @@ function AdminProductsPage() {
     // several OCR lines, so join those lines and stop at delivery/policy blocks.
     for (const line of lines.slice(titleStart, titleStart + 12)) {
       if (
-        /get by|free returns?|cash on delivery|mobile protec|select variation|product ratings?/i.test(
+        /get by|seller'?s own fleet delivery|free shipping|free returns?|cash on delivery|mobile protec|select variation|product ratings?/i.test(
           line,
         )
       ) {
@@ -528,8 +528,9 @@ function AdminProductsPage() {
               </button>
             </div>
             <Field label="Nama produk">
-              <input
-                className="admin-input"
+              <textarea
+                className="admin-input min-h-20 resize-y"
+                rows={2}
                 required
                 value={editing.name}
                 onChange={(e) => setEditing({ ...editing, name: e.target.value })}
