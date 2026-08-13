@@ -30,6 +30,15 @@ type ProductRow = {
   active: boolean;
 };
 
+type PriceReport = {
+  id: string;
+  page_url: string;
+  reason: string;
+  details: string;
+  status: "baru" | "selesai";
+  created_at: string;
+};
+
 const emptyProduct: ProductRow = {
   id: "",
   name: "",
@@ -57,6 +66,7 @@ function AdminProductsPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [items, setItems] = useState<ProductRow[]>([]);
+  const [reports, setReports] = useState<PriceReport[]>([]);
   const [editing, setEditing] = useState<ProductRow | null>(null);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
@@ -85,6 +95,22 @@ function AdminProductsPage() {
       .order("popularity", { ascending: false });
     if (error) setMessage(`Gagal memuatkan produk: ${error.message}`);
     else setItems((data ?? []) as ProductRow[]);
+    const { data: reportData } = await supabase
+      .from("price_reports")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(50);
+    setReports((reportData ?? []) as PriceReport[]);
+  }
+
+  async function resolveReport(id: string) {
+    if (!supabase) return;
+    const { error } = await supabase
+      .from("price_reports")
+      .update({ status: "selesai" })
+      .eq("id", id);
+    setMessage(error ? `Gagal menutup laporan: ${error.message}` : "Laporan ditandakan selesai.");
+    await loadProducts();
   }
 
   async function login(event: FormEvent) {
@@ -131,9 +157,7 @@ function AdminProductsPage() {
       (line) => /after\s+voucher/i.test(line) && /RM\s*[0-9]/i.test(line),
     );
     const voucherPriceMatch = voucherPriceLine?.match(/RM\s*([0-9][0-9.,]*)/i);
-    const voucherPrice = voucherPriceMatch
-      ? Number(voucherPriceMatch[1].replace(/,/g, ""))
-      : 0;
+    const voucherPrice = voucherPriceMatch ? Number(voucherPriceMatch[1].replace(/,/g, "")) : 0;
     const ignored =
       /shopee|shipping|voucher|sold|rating|cashback|coins|add to cart|buy now|free returns?|cash on delivery|mobile protec|select variation|review summary|chat now|paylater|months?|arrives? late|lower prices?|remind me|get by/i;
     const priceLineIndex = lines.findIndex(
@@ -151,7 +175,11 @@ function AdminProductsPage() {
     // On Shopee mobile, the title appears shortly after the price. It can span
     // several OCR lines, so join those lines and stop at delivery/policy blocks.
     for (const line of lines.slice(titleStart, titleStart + 12)) {
-      if (/get by|free returns?|cash on delivery|mobile protec|select variation|product ratings?/i.test(line)) {
+      if (
+        /get by|free returns?|cash on delivery|mobile protec|select variation|product ratings?/i.test(
+          line,
+        )
+      ) {
         if (titleLines.length) break;
         continue;
       }
@@ -176,9 +204,7 @@ function AdminProductsPage() {
         /[a-z]/i.test(line),
     );
     const rawName =
-      titleLines.join(" ") ||
-      fallbackCandidates.sort((a, b) => b.length - a.length)[0] ||
-      "";
+      titleLines.join(" ") || fallbackCandidates.sort((a, b) => b.length - a.length)[0] || "";
     const normalizedName = rawName
       .replace(/^[^a-z0-9(]+/i, "")
       .replace(/^preferred\s+/i, "")
@@ -190,15 +216,11 @@ function AdminProductsPage() {
     const condition = normalizedName.match(/^\(([^)]+)\)\s*/)?.[1] ?? "";
     const name = normalizedName
       .replace(/^\([^)]+\)\s*/, "")
-      .replace(
-        /\s+(?:1[0o]{2}\s*%|no\s+hidden\b|free\s+gift\b|ready\s+stock\b)[\s\S]*$/i,
-        "",
-      )
+      .replace(/\s+(?:1[0o]{2}\s*%|no\s+hidden\b|free\s+gift\b|ready\s+stock\b)[\s\S]*$/i, "")
       .replace(/[!.,\s]+$/, "")
       .slice(0, 180);
-    const price = Number.isFinite(voucherPrice) && voucherPrice > 0
-      ? voucherPrice
-      : prices[0] ?? 0;
+    const price =
+      Number.isFinite(voucherPrice) && voucherPrice > 0 ? voucherPrice : (prices[0] ?? 0);
     return {
       name,
       condition,
@@ -391,6 +413,37 @@ function AdminProductsPage() {
       </div>
 
       {message && <p className="mt-4 rounded-xl bg-muted p-3 text-sm">{message}</p>}
+
+      {reports.some((report) => report.status === "baru") && (
+        <section className="mt-6 rounded-2xl border border-border bg-card p-4 shadow-card">
+          <h2 className="font-extrabold">Laporan Pengguna</h2>
+          <div className="mt-3 space-y-3">
+            {reports
+              .filter((report) => report.status === "baru")
+              .map((report) => (
+                <article key={report.id} className="rounded-xl bg-muted p-3 text-sm">
+                  <p className="font-bold">{report.reason}</p>
+                  {report.details && <p className="mt-1">{report.details}</p>}
+                  <a
+                    className="mt-2 block truncate text-primary underline"
+                    href={report.page_url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {report.page_url}
+                  </a>
+                  <button
+                    className="admin-secondary mt-3"
+                    type="button"
+                    onClick={() => void resolveReport(report.id)}
+                  >
+                    Tandakan Selesai
+                  </button>
+                </article>
+              ))}
+          </div>
+        </section>
+      )}
 
       <form
         onSubmit={importShopee}

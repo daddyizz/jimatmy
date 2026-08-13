@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { analyticsConfig, site } from "@/data/site";
+import { PriceReportButton } from "@/components/reports/PriceReportButton";
 
 function NotFoundComponent() {
   useEffect(() => {
@@ -173,6 +174,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <Footer />
+        <PriceReportButton />
       </div>
     </QueryClientProvider>
   );
