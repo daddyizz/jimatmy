@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { analyticsConfig, site } from "@/data/site";
+import { PwaManager } from "@/components/pwa/PwaManager";
 import { PriceReportButton } from "@/components/reports/PriceReportButton";
 
 function NotFoundComponent() {
@@ -112,6 +113,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "apple-touch-icon", href: "/icons/icon-192.png" },
     ],
     scripts: [
       {
@@ -175,6 +178,7 @@ function RootComponent() {
         </main>
         <Footer />
         <PriceReportButton />
+        <PwaManager />
       </div>
     </QueryClientProvider>
   );
