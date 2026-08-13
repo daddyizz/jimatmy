@@ -164,16 +164,23 @@ function AdminProductsPage() {
       titleLines.join(" ") ||
       fallbackCandidates.sort((a, b) => b.length - a.length)[0] ||
       "";
-    const name = rawName
+    const normalizedName = rawName
       .replace(/^[^a-z0-9(]+/i, "")
       .replace(/[^\p{L}\p{N}\s()/%&+.,-]/gu, " ")
       .replace(/\b1+00%/g, "100%")
+      .replace(/\)\s*/g, ") ")
       .replace(/\s+/g, " ")
-      .trim()
+      .trim();
+    const condition = normalizedName.match(/^\(([^)]+)\)\s*/)?.[1] ?? "";
+    const name = normalizedName
+      .replace(/^\([^)]+\)\s*/, "")
+      .split(/\s+(?:100%|no hidden|free gift|ready stock)\b/i)[0]
+      .replace(/[!.,\s]+$/, "")
       .slice(0, 180);
     const price = prices[0] ?? 0;
     return {
       name,
+      condition,
       price,
       previousPrice: prices.find((value) => value > price) ?? price,
     };
@@ -193,6 +200,7 @@ function AdminProductsPage() {
       const recognition = await worker.recognize(importScreenshot);
       await worker.terminate();
       const extracted = extractProduct(recognition.data.text);
+      const submittedUrl = importUrl.trim();
       const uploadedImage = await uploadImage(await cropProductImage(importScreenshot));
       const response = await fetch("/api/admin/import-shopee", {
         method: "POST",
@@ -200,7 +208,7 @@ function AdminProductsPage() {
           "content-type": "application/json",
           authorization: `Bearer ${session.access_token}`,
         },
-        body: JSON.stringify({ url: importUrl.trim() }),
+        body: JSON.stringify({ url: submittedUrl }),
       });
       const result = (await response.json()) as {
         error?: string;
@@ -220,12 +228,14 @@ function AdminProductsPage() {
         name: extracted.name || result.data.name,
         short_description:
           (extracted.name
-            ? `${extracted.name}. Semak pilihan variasi dan butiran produk di Shopee.`
+            ? `${extracted.name}.${
+                extracted.condition ? ` Kondisi: ${extracted.condition}.` : ""
+              } Semak pilihan variasi dan butiran produk di Shopee.`
             : result.data.shortDescription) || "Lengkapkan penerangan produk ini.",
         image_url: uploadedImage ?? result.data.image,
         price: extracted.price || result.data.price,
         previous_price: extracted.previousPrice || result.data.previousPrice,
-        affiliate_url: result.data.affiliateUrl,
+        affiliate_url: submittedUrl,
       });
       setMessage(
         extracted.name && extracted.price
