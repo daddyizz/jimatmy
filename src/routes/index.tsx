@@ -81,17 +81,17 @@ function HomePage() {
               <SearchBar size="lg" submitLabel="Cari" />
             </div>
 
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-5 grid grid-cols-2 gap-3 sm:flex">
               <Link
                 to="/deals"
-                className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-strong"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-3 text-center text-xs font-semibold text-primary-foreground transition-colors hover:bg-primary-strong sm:w-auto sm:px-5 sm:text-sm"
               >
                 Cari Deal
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <Link
                 to="/tools"
-                className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border bg-background px-5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-3 text-center text-xs font-semibold text-foreground transition-colors hover:bg-muted sm:w-auto sm:px-5 sm:text-sm"
               >
                 <Calculator className="h-4 w-4" aria-hidden="true" />
                 Guna Shopping Tools
